@@ -1,4 +1,4 @@
 hepix_ipv6
 ==========
 
-Material related to the acticity of the HEPix IPv6 group
+Material related to the activity of the HEPix IPv6 group.
