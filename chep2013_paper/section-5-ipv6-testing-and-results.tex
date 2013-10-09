@@ -34,11 +34,11 @@ We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We us
 \caption{Cumulative data-transfer between Imperial College and Glasgow using PhEDEx on the IPv6 testbed.}\label{fig:phedex-transfer-volume}
 \end{figure}
 
-\subsection{Dual-stack at Imperial College HEP}
-The WLCG/GridPP site in the HEP group at Imperial College London (UKI-LT2-IC-HEP) has configured a subset of its hosts to be dual-stack. 
-The site currently runs DNS, SSH, NFS, EMI 2 and EMI 3 CREAM CE's, EMI 2 Worker Nodes, 
+\subsection{Dual-stack hosts at Imperial College London}
+The WLCG/GridPP site within the HEP group at Imperial College London (UKI-LT2-IC-HEP) has configured a subset of its hosts to be dual-stack. 
+The site currently runs DNS, SSH, NFS, EMI 2 and EMI 3 CREAM CEs, EMI 2 Worker Nodes, 
 ARC CE and dCache (headnode, SRM component only) services.
-Additionally, all BDII services including top and site BDII's run in dual-stack mode. The Puppet configuration system and the local OS install system have been left IPv4-only.
+Additionally, all BDII services including top and site BDIIs run in dual-stack mode. The Puppet configuration system and the local OS install system have been left IPv4-only.
 This set up was achieved in a number of stages. Initially, the local campus network team enabled 
 stateless address autoconfiguration (SLAAC) on the subnet routers servicing the grid hosts. All hosts acquired an IPv6 address via autoconfiguration. 
 No subsequent problems were observed and no hosts required IPv6 to be turned off in order to continue normal operations. 
