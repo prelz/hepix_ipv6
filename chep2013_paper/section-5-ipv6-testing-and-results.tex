@@ -53,7 +53,7 @@ Figure \ref{fig:full-mesh} shows the transfer results for the full mesh of sites
 We can see that, in general, transfers were fast, the graphs mostly peak to the left. Some sites (IHEP, Chicago) have long tails for transfers out, though transfers to them are more successful.
 
 \subsection{Testing with PhEDEx transfers}
-We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We used two sites (Imperial College, London, and Glasgow) with IPv6-enabled DPM storage elements, and transfers via an IPv6-enabled FTS3 server at RAL. Transfers were throttled to limit the load on the servers, and have been running smoothly for nearly two months at the time of writing. Figure \ref{fig:phedex-transfer-volume} shows the accumulated volume of data transfered from mid-August until early October 2013, by which point over 120 TB of data had been transferred with very few errors. This tells us that PhEDEx can indeed operate to CMS production standards with IPv6-enabled services.
+We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We used two WLCG/GridPP sites (Imperial College London and Glasgow) with IPv6-enabled DPM storage elements, and transfers via a dual-stack FTS3 server at Imperial College. Transfers were throttled to limit the load on the servers, and have been running smoothly for nearly two months at the time of writing. Figure \ref{fig:phedex-transfer-volume} shows the accumulated volume of data transfered from mid-August until early October 2013, by which point over 120 TB of data had been transferred with very few errors. This tells us that PhEDEx can indeed operate to CMS production standards with IPv6-enabled services.
 
 % To create this graphic:
 % 1) save your image as a 1024x1024 png/gif/bmp
@@ -73,4 +73,15 @@ We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We us
 \caption{Cumulative data-transfer between Imperial College and Glasgow using PhEDEx on the IPv6 testbed.}\label{fig:phedex-transfer-volume}
 \end{figure}
 
-
+\subsection{Dual-stack hosts at Imperial College London}
+The WLCG/GridPP site within the HEP group at Imperial College London (UKI-LT2-IC-HEP) has configured a subset of its hosts to be dual-stack. 
+The site currently runs dual-stack DNS, SSH, NFS, EMI 2 and EMI 3 CREAM CEs, EMI 2 Worker Nodes, 
+ARC CE and dCache (headnode, SRM component only) services.
+Additionally, all BDII services including top and site BDIIs run in dual-stack mode. The Puppet configuration system and the local OS install system have been left IPv4-only.
+This set up was achieved in a number of stages. Initially, the local campus network team enabled 
+stateless address autoconfiguration (SLAAC) on the subnet routers servicing the grid hosts. All hosts acquired an IPv6 address via autoconfiguration. 
+No subsequent problems were observed and no hosts required IPv6 to be turned off in order to continue normal operations. 
+Next, AAAA records were added to core services such as mail and LDAP. The DNS servers had static IPv6 addresses added. 
+The IPv6 DNS server hostnames were added into resolve.conf on all hosts. AAAA and PTR records were added to the worker nodes and these were made to point at the SLAAC addresses. 
+On relevant service hosts the IPv6 firewall was configured as appropriate. On hosts running a BDII service the IPv6 option was enabled explicitly 
+(by setting BDII\_IPV6\_SUPPORT=yes in /etc/sysconfig/bdii).
