@@ -2,7 +2,7 @@ For a successful transition to the use of IPv6 it is necessary to do a full surv
 
 IPv6-readiness is not a simple yes/no question. There are various stages of readiness to be addressed:
 \begin {itemize}
-\item Does the se rvice break/slow down when used with IPv4 on a dual-stack host with IPv6 enabled?
+\item Does the service break/slow down when used with IPv4 on a dual-stack host with IPv6 enabled?
 \item Will the service try using (connecting/binding to) an IPv6 address (AAAA record), when available from DNS?
 \item Will the service prefer IPv6 addresses from DNS, when preferred at the host level?
 \item Does this need to be configured and how?
@@ -11,7 +11,8 @@ IPv6-readiness is not a simple yes/no question. There are various stages of read
 
 In many ways the most important question is the first one. As long as a service deployed on a dual-stack host behaves properly for IPv4 then we are safe to recommend such a deployment on the WLCG production infrastructure.
 
-The current state of our survey may be seen at {\tt http://hepix-ipv6.web.cern.ch/wlcg-applications}. At the time of 
+The current state of our survey may be seen at {\tt http://hepix-ipv6.web.cern.ch/wlcg-applications}. \\ 
+At the time of 
 writing this paper, there are still many packages which need further investigation and testing. Software known to be 
 not ready for IPv6 at this time includes OpenAFS servers and clients, all but the latest release of dCache and many batch systems. Full details of all such problems and investigations will be recorded in our online database.
 
