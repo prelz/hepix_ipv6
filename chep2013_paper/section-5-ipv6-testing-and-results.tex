@@ -22,8 +22,8 @@ To summarise, any testing should comply with these requirements:
 \item all batch nodes must be tested in IPv4, IPv6 and dual stack (not all configurations might be possible for a given site)
 \end{itemize}
 
-The use cases to test are of increasingly complexity and should be addressed in this order:
-\begin{itemize}
+The use cases to test are of increasing complexity and should be addressed in this order:
+\begin{enumerate}[a.]
 \item basic job submission, either direct (via CREAM client, Condor-G, etc.) or via workload management services (EMI WMS, glideinWMS, PanDA, etc.)
 \item basic data transfer from/to a user node to/from a storage element
 \item third party data transfer (e.g. via FTS)
@@ -33,7 +33,7 @@ The use cases to test are of increasingly complexity and should be addressed in 
 \item experiment workflow, running a complete production/analysis task
 \item information system query (e.g. via BDII)
 \item job monitoring (e.g. via MonALISA, experiment dashboards, etc.)
-\end{itemize}
+\end{enumerate}
 In all cases, all relevant client/service combinations in terms of network protocols should be addressed. For simplicity, ``auxiliary'' services (ARGUS, VOMS, MYProxy, etc.) running only IPv4 may be used.
 
 
@@ -41,7 +41,7 @@ In all cases, all relevant client/service combinations in terms of network proto
 
 We used the PhEDEx LifeCycle agent \cite{LifeCycle} to drive transfers between pairs of sites, using gridftp with the IPv6 connectivity flags. Filesizes were checked at the destination, and any failures recorded. Files were transferred in both directions between each site pair.
 
-Initially, we simply tested connectivity and basic functionality. We also tested under specific conditions, e.g. to compare throughput and error rates with IPv6 vs. IPv4 connectivity. This was useful for debugging issues with firewalls etc.
+Initially, we simply tested connectivity and basic functionality. We also tested under specific conditions, e.g. to compare throughput and error rates with IPv6 vs. IPv4 connectivity. This was useful for debugging issues with firewalls, etc.
 
 Since March 2013 the transfer testbed has been running continuously, with more sites joining over time. Finally we have 11 sites transferring 1 GB files between each other. With this many sites, we have had to introduce a delay between successive transfers, to reduce load on the servers.
 
@@ -50,10 +50,10 @@ There were periods when a site or site-pair had errors lasting for a week or mor
 
 Figure \ref{fig:full-mesh} shows the transfer results for the full mesh of sites. Transfers from a site are shown along the rows, transfers to a site are shown in the columns. All plots are scaled to an x-axis of 500 seconds (which corresponds to a transfer rate of 2 MB/sec), and only successful transfers are shown.
 
-We can see that, in general, transfers were fast, the graphs mostly peak to the left. Some sites (IHEP, Chicago) have long tails for transfers out, though transfers to them are more successful.
+We can see that, in general, transfers were fast, the graphs mostly peak to the left. Some sites (IHEP Beijing, Fermilab) have long tails for transfers out, though transfers to them are more successful.
 
 \subsection{Testing with PhEDEx transfers}
-We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We used two WLCG/GridPP sites (Imperial College London and Glasgow) with IPv6-enabled DPM storage elements, and transfers via a dual-stack FTS3 server at Imperial College. Transfers were throttled to limit the load on the servers, and have been running smoothly for nearly two months at the time of writing. Figure \ref{fig:phedex-transfer-volume} shows the accumulated volume of data transfered from mid-August until early October 2013, by which point over 120 TB of data had been transferred with very few errors. This tells us that PhEDEx can indeed operate to CMS production standards with IPv6-enabled services.
+We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We used two WLCG/GridPP sites (Imperial College London and Glasgow) with IPv6-enabled DPM storage elements, and transfers via a dual-stack FTS3 (\cite{FTS3}) server at Imperial College. Transfers were throttled to limit the load on the servers, and have been running smoothly for nearly two months at the time of writing. Figure \ref{fig:phedex-transfer-volume} shows the accumulated volume of data transferred from mid-August until early October 2013, by which point over 120 TB of data had been transferred with very few errors. This tells us that PhEDEx can indeed operate to CMS production standards with IPv6-enabled services.
 
 % To create this graphic:
 % 1) save your image as a 1024x1024 png/gif/bmp
@@ -79,9 +79,9 @@ The site currently runs dual-stack DNS, SSH, NFS, EMI 2 and EMI 3 CREAM CEs, EMI
 ARC CE and dCache (headnode, SRM component only) services.
 Additionally, all BDII services including top and site BDIIs run in dual-stack mode. The Puppet configuration system and the local OS install system have been left IPv4-only.
 This set up was achieved in a number of stages. Initially, the local campus network team enabled 
-stateless address autoconfiguration (SLAAC) on the subnet routers servicing the grid hosts. All hosts acquired an IPv6 address via autoconfiguration. 
+stateless address autoconfiguration (SLAAC) on the subnet routers servicing the grid hosts. {\em All hosts} acquired an IPv6 address via autoconfiguration. 
 No subsequent problems were observed and no hosts required IPv6 to be turned off in order to continue normal operations. 
 Next, AAAA records were added to core services such as mail and LDAP. The DNS servers had static IPv6 addresses added. 
-The IPv6 DNS server hostnames were added into resolve.conf on all hosts. AAAA and PTR records were added to the worker nodes and these were made to point at the SLAAC addresses. 
+The IPv6 DNS server hostnames were added into {\tt /etc/resolv.conf} on all hosts. AAAA and PTR records were added to the worker nodes and these were made to point to the SLAAC addresses. 
 On relevant service hosts the IPv6 firewall was configured as appropriate. On hosts running a BDII service the IPv6 option was enabled explicitly 
-(by setting BDII\_IPV6\_SUPPORT=yes in /etc/sysconfig/bdii).
+(by setting {\tt BDII\_IPV6\_SUPPORT=yes} in {\tt /etc/sysconfig/bdii}).

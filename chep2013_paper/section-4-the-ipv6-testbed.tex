@@ -38,8 +38,8 @@ deployment of new services.
 The current list of active testbed nodes can be found at the following URL:\\
 {\tt http://hepix-ipv6.web.cern.ch/content/testbed}\\
 While we have at the time of writing a reasonable
-9-site/6-NREN coverage of Europe, the only non-european site in the testbed
-is IHEP at Beijing. More testbed sites are both needed and welcome to join 
+9-site/6-NREN coverage of Europe, the only non-european sites in the testbed
+are IHEP Beijing in China and Fermilab in the US. More testbed sites are both needed and welcome to join 
 to achieve a better match of our stated testbed goals.
 \par
 As for OS distributions, testbed nodes are mostly installed with 
@@ -56,7 +56,7 @@ Security Infrastructure (GSI)
 plug-in maps all members of our test VO ({\tt ipv6.hepix.org}) to one
 local account, logging any access. 
 \par
-The first service we deployed for standalone testing through testbed was
+The first service we deployed for standalone testing through the testbed was
 GSIFTP. This was not only because of GSIFTP's basic role in WLCG data
 transfer, but also because the FTP protocol (the GSI extensions don't 
 affect but also suffer from this issue) is a paradigmatic example of 
@@ -66,7 +66,7 @@ how non-trivial IPv6 support can be. The original FTP specifications
 This required the introduction, with RFC 2428 (September 1998) of
 ``extended'' versions of the same commands, supporting different address
 families, and IPv6 in particular. We found on our testbed that support for 
-the 'extended' command forms (and thus {\em implicitely} for IPv6)
+the 'extended' command forms (and thus {\em implicitly} for IPv6)
 is missing from certain FTP client implementations. Retrofitting the
 clients with these commands is definitely more than a simple change in
 the transport layer and serves as an example of how ramified the
