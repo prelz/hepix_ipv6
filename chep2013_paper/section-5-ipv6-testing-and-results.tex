@@ -50,7 +50,7 @@ There were periods when a site or site-pair had errors lasting for a week or mor
 
 Figure \ref{fig:full-mesh} shows the transfer results for the full mesh of sites. Transfers from a site are shown along the rows, transfers to a site are shown in the columns. All plots are scaled to an x-axis of 500 seconds (which corresponds to a transfer rate of 2 MB/sec), and only successful transfers are shown.
 
-We can see that, in general, transfers were fast, the graphs mostly peak to the left. Some sites (IHEP Beijing, Fermilab) have long tails for transfers out, though transfers to them are more successful.
+We can see that, in general, transfers were fast, the graphs mostly peak to the left. Some sites (IHEP Beijing, Chicago) have long tails for transfers out, though transfers to them are more successful.
 
 \subsection{Testing with PhEDEx transfers}
 We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We used two WLCG/GridPP sites (Imperial College London and Glasgow) with IPv6-enabled DPM storage elements, and transfers via a dual-stack FTS3 (\cite{FTS3}) server at Imperial College. Transfers were throttled to limit the load on the servers, and have been running smoothly for nearly two months at the time of writing. Figure \ref{fig:phedex-transfer-volume} shows the accumulated volume of data transferred from mid-August until early October 2013, by which point over 120 TB of data had been transferred with very few errors. This tells us that PhEDEx can indeed operate to CMS production standards with IPv6-enabled services.
