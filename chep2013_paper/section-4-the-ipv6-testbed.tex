@@ -57,7 +57,8 @@ plug-in maps all members of our test VO ({\tt ipv6.hepix.org}) to one
 local account, logging any access. 
 \par
 The first service we deployed for standalone testing through the testbed was
-GSIFTP. This was not only because of GSIFTP's basic role in WLCG data
+GridFTP (or, more accurately, {\tt gsiftp}). 
+This was not only because of GridFTP's basic role in WLCG data
 transfer, but also because the FTP protocol (the GSI extensions don't 
 affect but also suffer from this issue) is a paradigmatic example of 
 how non-trivial IPv6 support can be. The original FTP specifications 
@@ -72,7 +73,7 @@ clients with these commands is definitely more than a simple change in
 the transport layer and serves as an example of how ramified the
 introduction of 'IPv6 support' can be.
 \par
-Building on this mesh of GSIFTP servers, both continuous direct point-to-point 
+Building on this mesh of GridFTP servers, both continuous direct point-to-point 
 file transfer tests and tests of the File Transfer Service 
 (FTS), were successfully carried out. SRM endpoints
 were also added, as described in detail in the next section.
