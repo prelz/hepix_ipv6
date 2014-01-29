@@ -38,14 +38,14 @@ deployment of new services.
 The current list of active testbed nodes can be found at the following URL:\\
 {\tt http://hepix-ipv6.web.cern.ch/testbed-nodes}\\
 While we have at the time of writing a reasonable
-9-site/6-NREN coverage of Europe, the only non-european sites in the testbed
+9-site/6-National Research and Education Network (NREN) coverage of Europe, the only non-european sites in the testbed
 are IHEP Beijing in China and Fermilab in the US. More testbed sites are both needed and welcome to join 
 to achieve a better match of our stated testbed goals.
 \par
 As for OS distributions, testbed nodes are mostly installed with 
 Scientific Linux (CERN) version 5,
 to replicate production conditions at LCG Tier-X centres. A few testbed nodes
-have RHEL 6 derivatives installed: this allowed us to discover 
+have Red Hat Enterprise Linux (RHEL) \cite{rhel} version 6 derivatives installed: this allowed us to discover 
 (and document in our knowledge base, {\tt http://hepix-ipv6.web.cern.ch/knowledge-base})
 that, rather unexpectedly, {\tt libc} on RH6 causes unspecified 
 protocol sockets to be bound on IPv4 only, instead of dual-stack 
@@ -53,7 +53,7 @@ as it used to be.
 \par
 To achieve the simplest possible authentication scheme, a custom Globus
 Security Infrastructure (GSI)
-plug-in maps all members of our test VO ({\tt ipv6.hepix.org}) to one
+plug-in maps all members of our test Virtual Organisation (VO) ({\tt ipv6.hepix.org}) to one
 local account, logging any access. 
 \par
 The first service we deployed for standalone testing through the testbed was
@@ -62,9 +62,9 @@ This was not only because of GridFTP's basic role in WLCG data
 transfer, but also because the FTP protocol (the GSI extensions don't 
 affect but also suffer from this issue) is a paradigmatic example of 
 how non-trivial IPv6 support can be. The original FTP specifications 
-(RFC765/RFC959) used the quad-byte notation for IP addresses 
+(RFC 765/RFC 959 \cite{rfc}) used the quad-byte notation for IP addresses 
 {\em in the syntax of the FTP protocol commands} {\tt PORT} and {\tt PASV}.
-This required the introduction, with RFC 2428 (September 1998) of
+This required the introduction, with RFC 2428 (September 1998) \cite{rfc} of
 ``extended'' versions of the same commands, supporting different address
 families, and IPv6 in particular. We found on our testbed that support for 
 the 'extended' command forms (and thus {\em implicitly} for IPv6)
@@ -75,5 +75,5 @@ introduction of 'IPv6 support' can be.
 \par
 Building on this mesh of GridFTP servers, both continuous direct point-to-point 
 file transfer tests and tests of the File Transfer Service 
-(FTS), were successfully carried out. SRM endpoints
+(FTS), were successfully carried out. Storage Resource Manager (SRM) endpoints
 were also added, as described in detail in the next section.
