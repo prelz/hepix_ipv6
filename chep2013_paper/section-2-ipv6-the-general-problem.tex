@@ -1,10 +1,12 @@
 \section{IPv6: the general problem}
 
-The intention of the designers of the IPv6 protocol was to make it full of appealing features, in order to push its adoption widely and quickly. The IPv6 specifications (RFC 1883) were set back in 1995, when the Internet community realized that the classful allocation policies of the time were causing a quick depletion of the address space. 
+The intention of the designers of the IPv6 protocol was to make it full of appealing features, in order to push its adoption widely and quickly. 
+The IPv6 specifications (RFC 1883/RFC 2460) \cite{rfc}
+were set back in 1995, when the Internet community realized that the classful allocation policies of the time were causing a quick depletion of the address space. 
 \par
-Unfortunately for IPv6, the IPv4 problem was quickly fixed with the adoption of the classless allocations (CIDR, RFC 1519) and by the invention of Address and Port translation techniques (NAT, RFC 1631). These events, together with the fact that the IPv6 advantages were far less appealing than the cost of deploying it, put the protocol in a limbo where it stayed for almost twenty years, until IPv4 addresses became scarce again.
+Unfortunately for IPv6, the IPv4 problem was quickly fixed with the adoption of the classless allocations (CIDR, RFC 1519 \cite{rfc}) and by the invention of Address and Port translation techniques (NAT, RFC 1631 \cite{rfc}). These events, together with the fact that the IPv6 advantages were far less appealing than the cost of deploying it, put the protocol in a limbo where it stayed for almost twenty years, until IPv4 addresses became scarce again.
 \par
-At the end of the first decade of the 21st century, Regional Internet Registries started warning the Internet community that IPv4 addresses would soon be exhausted and urged everyone to adopt IPv6. IPv6 was quite quickly deployed on the Internet backbones, but not where it would have brought the most of its benefits, at the client and content side. 
+At the end of the first decade of the 21st century, the RIRs started warning the Internet community that IPv4 addresses would soon be exhausted and urged everyone to adopt IPv6. IPv6 was quite quickly deployed on the Internet backbones, but not where it would have brought the most of its benefits, at the client and content side. 
 Plagued by the chicken and the egg problem (no users if no content, no content if no users), in 2012 finally some of the 
 biggest content providers made the bold move to make their services available over IPv6. 
 One year later, the IPv6 global traffic is gradually increasing but still counts as a very small fraction of the 
@@ -16,7 +18,8 @@ Many academic institutions, which joined the Internet when it was in a very earl
 This was the situation at CERN till 2011, when Server Virtualization started being used. The virtualization technique proved to be very effective and its adoption at CERN has grown exponentially. In 2012, when the plan for the services to be run in the upcoming remote data centre in Wigner (Budapest, HU) was finalized, it became clear that something like 250,000 public IP addresses would be needed in the near future. At the same time, RIPE, the European Internet Registry, was announcing the adoption of a new conservative allocation policy that would grant no more than 1024 IPv4 addresses to any requester. 
 It could have been an impasse for the IT deployment plans, but luckily CERN had been testing with IPv6 since 1998 and in 2011 the management of the IT department approved the project to deploy IPv6 in the CERN campus and datacentres, when its need had yet to be proven.
 \par
-For large enterprises like CERN, deploying IPv6 is not as simple as configuring a dozen routers to be dual stack. The Network Management System and the Network database had to be made IPv6 aware, all the IPv6 information generated and all the basic network services configured (DNS, NTP, DHCPv6...). At the same time the network security had to be kept at the same level as always.
+For large enterprises like CERN, deploying IPv6 is not as simple as configuring a dozen routers to be dual stack. The Network Management System and the Network database had to be made IPv6 aware, all the IPv6 information generated and all the basic network services configured: the Domain Name Service (DNS), the Network Time Protocol (NTP), the Dynamic Host Configuration Protocol (DHCPv6), etc. 
+At the same time the network security had to be kept at the same level as always.
 After two years, the deployment is almost completed; right in time to tackle the IPv4 exhaustion problem that most likely will hit CERN in 2015 when the Wigner datacentre will reach its full capacity. 
 Many applications still cannot make use of IPv6, thus it is very premature to deploy IPv6-only Virtual Servers. The strategy will be to deploy a hybrid solution where servers get a private IPv4 address and a public IPv6 one. The private IPv4 address will allow legacy applications to work within the CERN domain,  while the public IPv6 address will allow world-wide reachability.
 \par
