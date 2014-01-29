@@ -24,15 +24,15 @@ To summarise, any testing should comply with these requirements:
 
 The use cases to test are of increasing complexity and should be addressed in this order:
 \begin{enumerate}[a.]
-\item basic job submission, either direct (via CREAM client, Condor-G, etc.) or via workload management services (EMI WMS, glideinWMS, PanDA, etc.)
+\item basic job submission, either direct (via CREAM client \cite{cream}, Condor-G, etc.) or via workload management services (EMI WMS \cite{wms}, glideinWMS, PanDA \cite{panda}, etc.)
 \item basic data transfer from/to a user node to/from a storage element
-\item third party data transfer (e.g. via FTS)
-\item production data transfer (e.g. via PhEDEX, DIRAC, etc.)
+\item third party data transfer (e.g. via FTS \cite{fts})
+\item production data transfer (e.g. via PhEDEX \cite{phedgen}, DIRAC, etc.)
 \item conditions data access (e.g. via Frontier/squid)
-\item experiment software access (e.g. via CVMFS)
+\item experiment software access (e.g. via CVMFS \cite{cvmfs})
 \item experiment workflow, running a complete production/analysis task
-\item information system query (e.g. via BDII)
-\item job monitoring (e.g. via MonALISA, experiment dashboards, etc.)
+\item information system query (e.g. via BDII \cite{bdii})
+\item job monitoring (e.g. via MonALISA \cite{monalisa}, experiment dashboards, etc.)
 \end{enumerate}
 In all cases, all relevant client/service combinations in terms of network protocols should be addressed. For simplicity, ``auxiliary'' services (ARGUS, VOMS, MYProxy, etc.) running only IPv4 may be used.
 
@@ -45,7 +45,7 @@ Initially, we simply tested connectivity and basic functionality. We also tested
 
 Since March 2013 the transfer testbed is running continuously, with more sites joining over time. Finally we have 12 sites transferring 1 GB files among each other.
 
-To date, we have transferred over 2 PB of data between the 12 sites over the 6 months since the testbed started continuous operations. This is 7\% of the rate that CMS achieve in daily operations, so is quite significant. The average success rate is 87\%, which is very high considering that the testbed is operated at-risk. Errors are only detected when someone decides to look for them, and were often left unfixed to aid debugging.
+To date, we have transferred over 2 PB of data between the 12 sites over the 6 months since the testbed started continuous operations. This is 7\% of the rate that CMS \cite{cms} achieve in daily operations, so is quite significant. The average success rate is 87\%, which is very high considering that the testbed is operated at-risk. Errors are only detected when someone decides to look for them, and were often left unfixed to aid debugging.
 So we can conclude that gridftp transfers over IPv6 are very reliable, given adequate hardware to run on.
 
 Figure \ref{fig:full-mesh} shows transfer results for the full mesh of sites. The source site is shown along the rows, the destination site is shown in the columns. All plots are scaled to an x-axis of 500 seconds (corresponding to a transfer rate of 2 MB/sec), and only successful transfers are shown.
@@ -53,7 +53,7 @@ Figure \ref{fig:full-mesh} shows transfer results for the full mesh of sites. Th
 We can see that, in general, transfers were fast, the graphs mostly peak to the left. Some sites (IHEP Beijing, Chicago) have long tails for transfers out, though transfers to them are more successful.
 
 \subsection{Testing with PhEDEx transfers}
-We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We used two WLCG/GridPP sites (Imperial College London and Glasgow) with IPv6-enabled DPM storage elements, and transfers via a dual-stack FTS3 (\cite{FTS3}) server at Imperial College. Transfers were throttled to limit the load on the servers, and have been running smoothly for nearly two months at the time of writing, transferring over 120 TB of data. This tells us that PhEDEx can indeed operate to CMS production standards with IPv6-enabled services.
+We also tested with PhEDEx (\cite{PhEDEx}), the CMS data-placement system. We used two WLCG/GridPP sites (Imperial College London and Glasgow) with IPv6-enabled Disk Pool Manager (DPM) storage elements, and transfers via a dual-stack FTS3 (\cite{FTS3}) server at Imperial College. Transfers were throttled to limit the load on the servers, and have been running smoothly for nearly two months at the time of writing, transferring over 120 TB of data. This tells us that PhEDEx can indeed operate to CMS production standards with IPv6-enabled services.
 % Figure \ref{fig:phedex-transfer-volume} shows the accumulated volume of data transferred from mid-August until early October 2013, by which point over 120 TB of data had been transferred with very few errors. This tells us that PhEDEx can indeed operate to CMS production standards with IPv6-enabled services.
 
 % To create this graphic:
