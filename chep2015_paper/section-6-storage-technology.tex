@@ -1,0 +1,36 @@
+\subsection{Storage technology}
+
+For the FTS3-based testbed SRM \cite{SRM2.2} was selected as more production-like 
+than the old gridftp-based one. 
+
+All sites participating selected dCache, as it had matured into the only full-stack storage 
+system to fully support dualstack and IPv6-only setups.
+
+\subsubsection{Protocol: SRM}
+
+SRM is built on SOAP which in turn is built on HTTP. It's designed to be protocol-independent as it only sends data in one stream and only processes TURLs and SURLs.
+It's however only used to set up the transfer, and the real transfer is handled by other protocols.
+
+\subsubsection{Protocol: HTTP}
+
+Transfer over HTTP or HTTPS work without problems for reads, but the implementations for writing are differing between different software leading to limited usability.
+It is used in production for reads at some sites, most notably NDGF-T1.
+
+\subsubsection{Protocol: GSIFTP} 
+
+GSIFTP or GridFTP\cite{GFTP1.0} is FTP with an extra layer on top for multistreaming and autentication. It's currently widely used with SRM, but has issues with IPv6 since it sends the IP address of where to
+connect to instead of using hostnames. All current servers and clients break the GridFTP-2.0 document \cite{GFTP2.0} in the same way to support "Delayed Passive", a method for redirecting writes from the client directly to the storage without a multihost storage environment like dCache having to proxy the write. 
+
+
+\subsubsection{Protocol: XROOTD} 
+
+XROOTD by SLAC is a general purpose random-IO protocol for data access. It supports IPv6 from release 4.0.0.
+
+
+\subsubsection{Software: dCache} 
+
+dCache is a Java-based software for building distributed storage solutions. It supports many different access protocols and authentication methods.
+
+\subsubsection{Software: DPM} 
+
+DPM or Disk Pool Manager was the software used by many sites for the previous testbed. It 
