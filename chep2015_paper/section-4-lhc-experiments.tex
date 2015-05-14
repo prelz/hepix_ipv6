@@ -1,0 +1,35 @@
+
+
+The shortage of available IPv4 addresses implies that there is a significant possibility that new large
+computing facilities will not be able to give IPv4 addresses to all of the machines in their network. The
+most likely consequence is that for these sites, worker nodes -- which constitute the largest fraction of
+independent computing nodes will have purely IPv6 network addresses. Hence, the main use case for the LHC
+experiments is to enable jobs to run on these machines, access their software areas and input data and
+upload their outputs to various grid storages or services as needed.
+
+The LHC experiments generally assume [LHCassumption reference] that the storage on different sites and
+supporting middleware [middleware reference] like the LFC will either be directly dual-stack, or support
+dual stack operation in some way, enabling seamless access to the storage as needed for either downloading
+or saving. For example, it is expected that dual-stack squid proxies will be needed for CVMFS and xrootd
+will soon be dual-stack, to handle storage technologies like Castor which will not be IPv4 only. The
+servers that the LHC experiments use to handle the grid infrastructure are / will also be dual-stack.
+
+As an example of the above, we look at LHCb [LHCb reference] which is the experiment on the LHC, optimised
+for studying beauty and charm physics. LHCb uses the DIRAC [DIRAC reference] interware to manage is grid
+operations. The DIRAC software was coded to be able to handle both IPv4 and IPv6 addresses in late 2014,
+with the modifications being easy enough to make by non-expert programmers. While testing the processes
+on a dual-stack machine, it was found that there was a significant number of connections which were not
+going through to the servers which was finally traced back to a missing enable\_ipv6 option to compile python
+by an external provider causing errors in identifying IPv6 addresses. Using a version of the library, the
+problem with dropped connections went away and testing DIRAC will restart soon.
+
+In general, testing of the grid middleware by the different experiments is going ahead as fast as possible
+given the manpower and time constraints of the LHC startup and the immediate issues with handling purely
+IPv6 worker nodes are expected to be sorted by sometime in 2016.
+
+[LHCassumption reference] : WLCG pre-GDB - IPv6 Workshop (A. Dewhurst et al.), https://indico.cern.ch/event/313194/session/1/contribution/3/0/material/slides/0.pdf
+[middleware reference] : https://wiki.egi.eu/wiki/Middleware\_products\_verified\_for\_the\_support\_of\_IPv6 , http://hepix-ipv6.web.cern.ch/wlcg-applications
+[LHCb reference] : LHCb Collab. (A. Alves et al.), JINST 3, S08005 (2008), http://dx.doi.org/10.1088/1748-0221/3/08/S08005
+[DIRAC reference] : DIRAC: a community grid solution (A. Tsaregorodtsev et al.), 2008 J. Phys.: Conf. Ser. 119 062048, http://iopscience.iop.org/1742-6596/119/6/062048
+
+

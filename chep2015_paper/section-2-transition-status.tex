@@ -1,0 +1,55 @@
+We now offer a quick panorama of the IPv6 statistical trends since the last
+CHEP conference and identify two factors that may be currently limiting 
+the IPv6 adoption rate. 
+\subsection{Survey of available statistical data}
+An analysis of the available statistical data collected since 2013
+by the Regional Internet Registries \cite{ripeipv6,arinstat,apnicstat,afrinicipv6,lacnicipc6} and by major internet
+service providers \cite{akamaistats,googlestats} shows a steady, but
+still polynomial growth in the volume of IPv6 traffic from roughly 
+2\% up to 6\% of the total. 
+\begin{figure}
+\centering
+\def\svgwidth{\columnwidth}
+\input{bgp_updates.pdf_tex}
+\caption{Number of routing topology updates involving the reference LIR of the working group testbed participants recorded by RIPEstat \cite{ripestat} every 12 hours since CHEP2013.}
+\label{fig:bgpupdates}
+\end{figure}
+Not everything has been progressing at a relaxed pace, though: we collected from RIPEstat (\cite{ripestat}) into Figure \ref{fig:bgpupdates} the
+rate of BGP routing topology updates that affects
+the IPv6 {\tt/32} prefixes that serve our
+one may wonder about the causes that prevent a more rapid adoption pace.\par
+Transport and provider issues have to be excluded right away: most
+local registries, including all of the national research networks, have been
+providing IPv6 transport for 7 years or more (\cite{ripeness}). Performance issues also have to
+be ruled out: available studies, especially the ones carried out during the
+``world IPv6 launch'' in 2012 (see \cite{wdayperf}) show performance on 
+the two stacks to be comparable within statistics. The reality of the IPv4 
+address depletion
+should also be widely perceived by now, as many regional registries are
+handling the {\it final} IPv4 assignment to local registries.\par
+Two residual classes of factors may be quenching IPv6 adoption, one
+affecting network administrators and one affecting application developers:
+\begin{enumerate}
+\item {\small
+The IPv4/v6 difference in address allocation schemes, the pivot role of
+ICMPv6 Router Advertisements, the short-term
+need to implement measures to counter rogue Router Advertisements 
+(see RFC6104, \cite{rfc}) are all adding to the already sizeable initial 
+investment of implementing monitoring and security tools for IPv6.\\
+Also, existing IPv6 code in the Operating Systems and related tools often
+shows by inspection not to have underwent full coverage testing:
+a phase of initial fault finding and patching is foreseen and feared.
+}
+\item {\small
+Apart from the syntactical differences in IPv6 addresses (e.g. parsing
+'{\tt defa}' in {\it default} as a hex digit), and the need to label, sort and 
+pick IPv4 vs IPv6 addresses, a large {\it semantical} change is
+needed in applications supporting IPv6. Every network endpoint on the
+public IPv6 network has {\it at least} two IPv6 addresses assigned (global
+and link-local), and possibly more. Applications have therefore
+to {\it always} deal with multi-homed network endpoints, which means a complex
+$1\rightarrow n$ change for many of them. The status of porting to IPv6 of
+many applications of interest for our community is good (\cite{readiness}),
+but the related development effort cannot be underestimated.
+}
+\end{enumerate}
