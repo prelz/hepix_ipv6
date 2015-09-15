@@ -1,10 +1,10 @@
 The old testbed was based on GridFTP\cite{GFTP1.0, GFTP2.0} transfers between small storage elements. The software used on the servers were Globus gridftpd, 
 DPM (the Disk Pool Manager) and dCache. 
-All of these needed configuration changes from the default to work with IPv6.
+Some of these needed configuration changes from the default to work with IPv6.
 
 \begin{itemize}
 \item DPM needed a new MySQL (v5.5+) and several configuration changes to do any transfers over IPv6.
-\item dCache got GridFTP working in version 2.9.4, but needed no configuration changes.
+\item dCache got GridFTP working in version 2.9.4, but needed no configuration changes, except for the use of multiple hostnames (see below).
 \item StoRM needs configuration changes but works if it's new enough.
 \item XRootD got first IPv6 support in version 4.0.0; it is fully dual-stack since. Version 4.1.0 brought a lot of fixes for the IPv6 functionality.
 \item Globus gridftpd needs configuration changes.
