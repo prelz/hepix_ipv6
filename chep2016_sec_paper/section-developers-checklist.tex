@@ -1,0 +1,51 @@
+\begin{figure}
+\begin{framed}
+{\tt\small
+struct hostent  *resolved\_name=NULL;\\
+struct servent  *resolved\_serv=NULL;\\
+struct protoent *resolved\_proto=NULL;\\
+static char     *dest\_host="some.ip.host", *dest\_serv="ipservice";\\
+struct sockaddr\_in destination;\\ 
+resolved\_host = gethostbyname(dest\_host);\\
+resolved\_serv = getservbyname(dest\_serv, NULL);\\
+if (resolved\_host != NULL \&\& resolved\_serv != NULL) \{\\
+\qquad destination.sin\_family = resolved\_name->h\_addrtype;\\
+\qquad destination.sin\_port = htons(resolved\_serv->s\_port);\\
+\qquad memcpy(\&destination.sin\_addr, resolved\_host->h\_addr\_list[0],\\
+\qquad\qquad resolved\_host->h\_length);\\
+\qquad resolved\_proto = getprotobyname(resolved\_serv->s\_proto)\\
+\qquad if (resolved\_proto != NULL) \{\\
+\qquad\qquad int fd = socket(AF\_INET, SOCK\_STREAM, resolved\_proto->p\_proto);\\
+\qquad\qquad connect(fd, \&destination, sizeof(destination));\\
+\qquad\qquad /* Check for errors, connect, etc... */\\
+\qquad \}\\
+\}
+}
+\end{framed}
+\par
+\begin{framed}
+{\tt\small
+struct addrinfo ai\_req, *ai\_ans, *cur\_ans;\\
+static char     *dest\_host="some.ip.host", *dest\_serv="ipservice";\\
+ai\_req.ai\_flags = 0;\\
+ai\_req.ai\_family = PF\_UNSPEC;\\
+ai\_req.ai\_socktype = SOCK\_STREAM;\\
+ai\_req.ai\_protocol = 0; /* Any protocol is OK */\\
+if (getaddrinfo(dest\_host, dest\_serv, \&ai\_req, \&ai\_ans) != 0) \{\\
+\qquad for (cur\_ans = ai\_ans; cur\_ans != NULL; cur\_ans = cur\_ans->ai\_next) \{\\
+\qquad\qquad int fd = socket(cur\_ans->ai\_family, cur\_ans->ai\_socktype,\\
+\qquad\qquad\qquad cur\_ans->ai\_protocol);\\
+\qquad\qquad connect(fd\_socket,cur\_ans->ai\_addr,cur\_ans->ai\_addrlen);\\
+\qquad\qquad /* Check for errors - This loop has the ability to change the */\\
+\qquad\qquad /* order of the getaddrinfo results! */\\
+\qquad \}\\
+\}
+}
+\end{framed}
+\caption{C code snippets showing how the basic IP service resolution and connection 
+ changes from legacy IPv4-only to a dual-stack or IPv6-only environment. This represents
+ the zeroth-order porting effort for much IPv4-only code. The newer structure
+ is more terse, but the changes are extensive enough, both syntactically and
+ semantically, to probably trigger the refactoring of much larger sections of code.}
+\label{fig:pseudocode}
+\end{figure}
