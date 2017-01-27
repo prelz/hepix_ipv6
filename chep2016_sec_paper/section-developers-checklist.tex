@@ -64,7 +64,8 @@ ordering start appearing everywhere. We identify the following implications of t
 fundamental fact on developers' practice, in rough descending order
 of importance:
 \begin{enumerate}
-\item The {\it syntactic} change of the core IP networking code in the
+\item {\bf Plan for extensive testing.}\\
+      The {\it syntactic} change of the core IP networking code in the
       IPv4$\rightarrow$IPv6 transition is large enough to oftentime
       justify the refactoring of larger portions of code. The 
       {\it semantic} $1\rightarrow N$ change may be {\it forcing}
@@ -77,7 +78,8 @@ of importance:
       that the perceived responsiveness, performance and reliability
       of the code remain unchanged. {\it Extensive} stress-testing should
       therefore be planned on IPv6-ported code. 
-\item Code that binds and connects IP sockets is suddenly faced with 
+\item {\bf Respect the sysadmin protocol preferences.}\\
+      Code that binds and connects IP sockets is suddenly faced with 
       making choices that used to be delegated to the operating system or
       networking-capable libraries. Lists of addresses may be received in
       a given order, but it's now the responsibility of the socket-handling
@@ -92,7 +94,8 @@ of importance:
       Applications should allow users to prefer/enable either IPv4 or IPv6 via
       configuration, but should always honor the system-level administrator's choice 
       by default.
-\item Fresh new code that hasn't been tested broadly and in the 
+\item {\bf Port all existing security measures.}\\
+      Fresh new code that hasn't been tested broadly and in the 
       wild is {\it per se} attractive to anyone looking for
       malicious exploits. Especially in the case where IPv6-specific
       code or processes are developed for {\it parallel} deployment with
