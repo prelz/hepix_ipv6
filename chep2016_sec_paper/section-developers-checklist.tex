@@ -50,10 +50,10 @@ if (getaddrinfo(dest\_host, dest\_serv, \&ai\_req, \&ai\_ans) != 0) \{\\
 \label{fig:pseudocode}
 \end{figure}
 When applications developed in the golden
-era of IPv4-only Internet face the transition to IPv6 the brunt of the
+era of IPv4-only Internet face the transition to IPv6, the brunt of the
 work often falls on the shoulders of developers, who often belong to a different
 generation as the original authors. Figure \ref{fig:pseudocode} tries to
-visualise the {\it extent} of the changes that the core code of any
+visualise the extent of the changes that the core code of any
 IP-capable application undergoes in the transition. In addition to
 the extensively different syntax, there is a
 fundamental $1\rightarrow N$ change here:
@@ -89,6 +89,9 @@ of importance:
       administrator\footnote{Via {\tt /etc/gai.conf}, {\tt ip addrlabel} or their equivalent.}
       may have security implications, developers should go the extra mile to 
       keep that ordering even if they have to reshuffle the list for any reason.
+      Applications should allow users to prefer/enable either IPv4 or IPv6 via
+      configuration, but should always honor the system-level administrator's choice 
+      by default.
 \item Fresh new code that hasn't been tested broadly and in the 
       wild is {\it per se} attractive to anyone looking for
       malicious exploits. Especially in the case where IPv6-specific
