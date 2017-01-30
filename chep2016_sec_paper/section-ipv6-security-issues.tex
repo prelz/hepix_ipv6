@@ -1,6 +1,9 @@
 IPv6 Security issues
 
-New features
+Paper
+starting with extension headers, fragmentation and other native header fields. Subsequently, Neighbor and Multicast Listener Discovery are discussed, followed by tunneling and mobility support.
+
+New features (from the poster)
 
 Many more ICMP message types! Cannot filter all of them (MTU discovery has to work). Must filter some of them. RFC4890 gives advice
 
@@ -15,7 +18,7 @@ Not really a feature of IPv6 proper, but much of the network stack and applicati
 Transitional technologies (e.g. tunnels) have intrinsic vulnerabilities but don't need to be there forever...
 
 
-Business as usual
+Business as usual (from the poster)
 
 As long as all network monitoring and administration tools are up-to-date and (therefore) aware of IPv6.
 
@@ -25,3 +28,6 @@ Can still pollute Ethernet address discovery (ND instead of ARP).
 Can still run a rogue DHCP server.
 Can still try forging and injecting packets into the local network. 
 Upper-layer protocols did not change!
+
+
+Advantages of a new designSecurity: important part of the IPv6 initial designDown-sidesLack of maturityNew vulnerabilities and attack vectorsNeed IPv6-compliant monitoring and toolsLack of education and experienceProblems of transition ? dual-stack, tunnelsBUT - Many threats/attacks happen at layers above/below the network layerAnd are therefore exactly the same as in IPv4Malware, phishing, buffer overflows, cross-site scripting, DDoS etc etc

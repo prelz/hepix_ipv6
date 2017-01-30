@@ -1,13 +1,45 @@
 
+
+
+
+
 \begin{enumerate}
-\item Ensure all security/network monitoring/logging are IPv6-capable
-\item Filter IPv6 packets that enter and leave your network/system
-\item Filter/disable IPv6-on-IPv4 tunnels
-\item Deploy RA-Guard or otherwise deal with Rogue RAs
-\item Filter ICMPv6 messages wisely
-\item Allow special-purpose headers only if needed
+
+
 \item Make an addressing plan
+
+
 \item Decide whether to use DHCPv6 or SLAAC+DynDNS
+
+
+\item Ensure all security/network monitoring/logging are IPv6-capable
+
+
+
+\item Filter IPv6 packets that enter and leave your network/system
+
+\item Filter ICMPv6 messages wisely
+
+\item Allow special-purpose headers only if needed
+
 \item Use synchronised IPv4/v6 access rules
+
+
+
+\item Deploy RA-Guard or otherwise deal with Rogue RAs
+
+
+
 \item Do not be tempted by transition technologies
+
+\item Filter/disable IPv6-on-IPv4 tunnels
+
+
+
 \end{enumerate}
+
+From ISGC2016 talk:
+
+Control IPv6 if not using itUse Dual-stack and avoid use of tunnels wherever possibleDrop packets containing RH Type 0 and unknown option headersDeny packets that do not follow rules for extension headersFilter IPv6 packets that enter and leave your networkRestrict who can send messages to multicast group addressesCreate an Address management planCreate a Security Policy for IPv6 (same as IPv4)Block unnecessary ICMPv6Protect against LAN RA, ND and DHCP attacksNDPMON and RAFIXD on critical segmentsCheck/modify all security monitoring, logging and parsing tools
+
+
