@@ -1,33 +1,42 @@
-IPv6 Security issues
+This section presents some security concerns that arise from the use of IPv6 networking protocols. 
 
-Paper
-starting with extension headers, fragmentation and other native header fields. Subsequently, Neighbor and Multicast Listener Discovery are discussed, followed by tunneling and mobility support.
+One of the advantages of the design of the new protocols is that security was a much more important part than before. On the other-hand there are several down-sides to the new protocols. These include: lack of maturity of the implementations therefore containing new vulnerabilities and attack vectors. The need for IPv6-compliant monitoring and tools and the lack of education and experience of sys admins both cause concern. There are problems introduced by the need to support a transition process, including the presence of dual-stack protocols and transition tunnels.
 
-New features (from the poster)
+One way of categorising the IPv6 security issues is as follows: those related to the new IPv6 packet extension headers, including fragmentation other native header fields. Secondly there are security issues arising from the new Neighbor and Router Discovery protocols. Thirdly there are security issues relating to IPv4 to IPv6 transition tools, tunnelling and the new IPv6 support for mobility.
 
-Many more ICMP message types! Cannot filter all of them (MTU discovery has to work). Must filter some of them. RFC4890 gives advice
+As an example some new features include:
 
-New methods for autoconfiguring addresses, routes, DNS. Good for the end-user. Must do something against rogue Router Advertisements (see RFC6104)
+\begin{enumerate}
 
-Longer IP addresses. Hey, everyone knows that. They may slow down brute force scans. But no bad guy is that crude...
+\item Many more ICMP message types! Cannot filter all of them (MTU discovery has to work). Must filter some of them. RFC4890 gives advice (Ref).
 
-Cannot fragment packets en-route.  Minimum MTU: 1280. But you can still hurt yourself and send small fragments if you wish. Some good news, at least
+\item New methods for autoconfiguring addresses, routers, location of DNS servers. Good for the end-user but networking teams must do something to protect against rogue Router Advertisements (see RFC6104).
 
-Not really a feature of IPv6 proper, but much of the network stack and application code is enticingly fresh!
+\item Longer IP addresses. On first consideration, this appears to make slow brute force scans of end-systems much more difficult but that is not always true. 
 
-Transitional technologies (e.g. tunnels) have intrinsic vulnerabilities but don't need to be there forever...
+\item IPv6 does not allow packet fragmentation en-route.  The minimum MTU supported is 1280 bytes. But you can still hurt yourself and send small fragments if you wish. 
+
+\item Not really a feature of IPv6 proper, but much of the network stack and application code is not yet hardened and therefore is potentially vulnerable to attack.
+
+\item Transitional technologies (e.g. tunnels) have intrinsic vulnerabilities but don't need to be there forever.
+
+\end{enumerate}
+
+The bad news is that many previous security issues from the IPv4-era have not changed. 
+
+As long as all network monitoring and administration tools are up-to-date and aware of IPv6, many earlier attacks are still possible.
+
+\begin {enumerate}
+
+\item Broadcasts and Multicasts are still there, with a vengeance.
+\item Can still use IP headers for out-of-band communications.
+\item Can still pollute Ethernet address discovery (ND instead of ARP).
+\item Can still run a rogue DHCP server.
+\item Can still try forging and injecting packets into the local network. 
+\item The upper-layer protocols did not change!
+
+\end {enumerate}
 
 
-Business as usual (from the poster)
-
-As long as all network monitoring and administration tools are up-to-date and (therefore) aware of IPv6.
-
-Broadcasts and Multicasts are still there, with a vengeance.
-Can still use IP headers for out-of-band communications.
-Can still pollute Ethernet address discovery (ND instead of ARP).
-Can still run a rogue DHCP server.
-Can still try forging and injecting packets into the local network. 
-Upper-layer protocols did not change!
 
 
-Advantages of a new designSecurity: important part of the IPv6 initial designDown-sidesLack of maturityNew vulnerabilities and attack vectorsNeed IPv6-compliant monitoring and toolsLack of education and experienceProblems of transition ? dual-stack, tunnelsBUT - Many threats/attacks happen at layers above/below the network layerAnd are therefore exactly the same as in IPv4Malware, phishing, buffer overflows, cross-site scripting, DDoS etc etc

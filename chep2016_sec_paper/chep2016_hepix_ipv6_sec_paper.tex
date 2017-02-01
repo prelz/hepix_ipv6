@@ -9,7 +9,7 @@
 \title{IPv6 Security}
 
 \author{M~Babik$^1$, J~Chudoba$^2$, A~Dewhurst$^3$, T~Finnern$^4$, T~Froy$^5$,
-        C~Grigoras$^1$, K~Hafeez$^3$, B~Hoeft$^6$, D~P~Kelsey$^3$,  
+        C~Grigoras$^1$, B~Hoeft$^6$, D~P~Kelsey$^3$,  
         F~L\'opez~Mu\~noz$^7$, E~Martelli$^1$, R~Nandakumar$^3$, 
         K~Ohrenberg$^4$, F~Prelz$^{8}$, D~Rand$^9$, 
         A~Sciab\`a$^1$, D~Traynor$^5$, U~Tigerstedt$^{10}$ and R~Wartel$^1$}
@@ -37,18 +37,18 @@
 \begin{abstract}
 IPv4 network addresses are running out and the deployment of IPv6 networking in many places is now well underway. Following the work of the HEPiX IPv6 Working Group, a growing number of sites in the Worldwide Large Hadron Collider Computing Grid (WLCG) have deployed dual-stack IPv6/IPv4 services. The aim of this is to support the use of IPv6-only clients, i.e. worker nodes, virtual machines or containers.
 \par
-The IPv6 networking protocols while they do contain features aimed at improving security also bring new challenges for operational IT security. We have spent many decades understanding and fixing security problems and concerns in the IPv4 world. Many WLCG IT support teams have only just started to consider IPv6 security and they are far from ready to follow best practice, the guidance for which is not easy to find. The lack of maturity of IPv6 implementations together with the increased complexity of the protocol standards and the fact that the new protocol stack allows for pretty much the same attack vectors as IPv4, raise many new issues for operational security teams.
+The IPv6 networking protocols while they do contain features aimed at improving security also bring new challenges for operational IT security. We have spent many decades understanding and fixing security problems and concerns in the IPv4 world. Many WLCG IT support teams have only just started to consider IPv6 security and they are far from ready to follow best practice, the guidance for which is not easy to distil. The lack of maturity of IPv6 implementations together with the increased complexity of some of the protocol standards while noting that the new protocol stack allows for many of the same attack vectors as IPv4, raise many new issues for operational security teams.
 \par
-The HEPiX IPv6 Working Group is producing guidance on best practices in this area. This paper will consider some of the security concerns for WLCG in an IPv6 world and present the HEPiX IPv6 working group guidance both for the system administrators who manage IT services on the WLCG distributed infrastructure and also for their related security and networking teams.
+The HEPiX IPv6 Working Group is producing guidance on best practices in this area. This paper considers some of the security concerns for WLCG in an IPv6 world and presents the HEPiX IPv6 working group guidance for the system administrators who manage IT services  on the WLCG distributed infrastructure, for their related site security and networking teams and for developers and software engineers working on WLCG applications.
 \end{abstract}
 
 \section{Introduction}
 \input{section-1-introduction.tex}
 
-\section{IPv6 security issues}
+\section{Some IPv6 security issues}
 \input{section-IPv6-security-issues}
 
-\section{Checklist for system administrators}
+\section{Checklist for WLCG site system administrators and networking teams}
 \input{section-sysadmins-checklist.tex}
 
 \section{Checklist for developers}

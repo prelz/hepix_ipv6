@@ -6,66 +6,77 @@
 \begin{enumerate}
 
 
-\item Make an addressing plan
+\item {\bf Make an addressing plan}\\
 One of the most important design decisions for a site networking team doing a deployment plan is to create a well thought out management plan for their IPv6 address space (linked to next topic too). Needs to include thoughts as to how to manage a dual-stack network. Address space (typically a /48 - default RFC3177) will have been allocated to the site by its NREN or other ISP. How many subnets? Routing architecture, address allocation within subnets etc. At the very least this should include .... See http://www.internetsociety.org/deploy360/resources/ipv6-address-planning-guidelines-for-ipv6-address-allocation/   and https://www.ripe.net/support/training/material/IPv6-for-LIRs-Training-Course/Preparing-an-IPv6-Addressing-Plan.pdf  
 
 
-\item Decide whether to use DHCPv6 or SLAAC+DynDNS
+\item {\bf Decide whether to use DHCPv6 or SLAAC+DynDNS} \\
 The second most important decision (and very much linked to the one above) to be made by a site networking team is whether or not to use one of the important new features of IPv6, i.e. the end-system use of  IPv6 Stateless Address Autoconfiguration (see RFC4862).  And use of dynamic DNS.  Server systems may want to have fixed addresses (either manual or DHCPv6).
 
 
 
-\item Ensure all security/network monitoring/logging are IPv6-capable
+\item {\bf Ensure all security/network monitoring/logging are IPv6-capable}\\
 Important for networking teams, security teams and also end systems tools for sysadmins. All monitoring and logging tools (commercial, open-source, home written) need to be evaluated and tested for operation on IPv6. New longer addresses and multiple addresses per network card. Do they work in a dual-stack environment and can they simultaneously monitor both stacks.  What about tools analysing log files - does parsing work?
 
 
-\item Filter IPv6 packets that enter and leave your network/system
+\item {\bf Filter IPv6 packets that enter and leave your network/system}\\
 IPv4-only networks will have end systems where IPv6 is enabled by default. May cause big security problems with IDS and Firewalls not handling IPv6 traffic correctly. If you don't want IPv6 best to turn it off and/or filter it at both the network and system level.
 
-Filter packets with Extention headers.
+Filter packets with Extension headers.
 
 For filtering of ICMPv6 packets - see next topic.
 
 
-\item Filter ICMPv6 messages wisely
+\item {\bf Filter ICMPv6 messages wisely} \\
 An important feature of IPv6. needed for path packet size determination and for ...
 Some things can therefore not be blocked (unlike in IPv4).
 
-\item Allow special-purpose headers only if needed
+\item {\bf Allow special-purpose headers only if needed} \\
 Extension Headers open up to all sorts of vulnerabilities - see RFC
 
-\item Use synchronised IPv4/v6 access rules
+\item {\bf Use synchronised IPv4/v6 access rules} \\
 For dual-stack networks MUCH much better to have identical firewall rules (site and end-system) for both stacks. Making them different can cause problems with
 
 
 
-\item Deploy RA-Guard or otherwise deal with Rogue RAs
+\item {\bf Deploy RA-Guard or otherwise deal with Rogue RAs} \\
 Neigbor Discovery and Router discovery are two important new features of IPv6. Opens up to several different security problems. Rogue routers can send out false router announcements (RAs) to persuade end systems to send packets to them for routing allowing for lack of privacy and man in the middle attacks.  Several ways of addressing this
 
 
-\item Do not be tempted by transition technologies
+\item {\bf Do not be tempted by transition technologies} \\
 By this  we mean think very carefully before deciding to use or allow the use of tunnelling technologies.  Dual-stack systems are the best approach. NAT64 is being used by some WLCG sites but we do not in general recommend this unless ...
 problems with tunnels and protocol translations are ...
 
-\item Filter/disable IPv6-on-IPv4 tunnels
+\item {\bf Filter/disable IPv6-on-IPv4 tunnels} \\
 We recommend not using such tunnels (see above).  So we suggest that sites should filter or disable these - done as follows?
 
 
 \end{enumerate}
 
-From ISGC2016 talk:
+Notes: The list from my ISGC2016 talk:
 
 Control IPv6 if not using it
+
 Use Dual-stack and avoid use of tunnels wherever possible
+
 Drop packets containing RH Type 0 and unknown option headers
+
 Deny packets that do not follow rules for extension headers
+
 Filter IPv6 packets that enter and leave your network
+
 Restrict who can send messages to multicast group addresses
+
 Create an Address management plan
+
 Create a Security Policy for IPv6 (same as IPv4)
+
 Block unnecessary ICMPv6
+
 Protect against LAN RA, ND and DHCP attacks
+
 NDPMON and RAFIXD on critical segments
+
 Check/modify all security monitoring, logging and parsing tools
 
 
