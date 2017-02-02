@@ -1,18 +1,20 @@
 This section presents some security concerns that arise from the use of IPv6 networking protocols. 
 
-One of the advantages of the design of the new protocols is that security was a much more important part than before. On the other-hand there are several down-sides to the new protocols. These include: lack of maturity of the implementations therefore containing new vulnerabilities and attack vectors. The need for IPv6-compliant monitoring and tools and the lack of education and experience of sys admins both cause concern. There are problems introduced by the need to support a transition process, including the presence of dual-stack protocols and transition tunnels.
+One of the potential advantages claimed by supporters of IPv6 was that security was explicitly addressed in the design. The mandatory use of IPsec, for example, seemed to be an early success but problems related to key management mean that the mandatory support of IPsec has since been relaxed (see section 11 RFC6434). 
 
-One way of categorising the IPv6 security issues is as follows: those related to the new IPv6 packet extension headers, including fragmentation other native header fields. Secondly there are security issues arising from the new Neighbor and Router Discovery protocols. Thirdly there are security issues relating to IPv4 to IPv6 transition tools, tunnelling and the new IPv6 support for mobility.
+The introduction of any new protocol can of course introduce security problems. For IPv6, these include the lack of maturity of the implementations which therefore are highly likely to still contain many new vulnerabilities. The need for IPv6-compliant monitoring and tools and the lack of education and experience of sysadmins both also cause concern. There are problems introduced by the need to support a transition process, including the complications arising from the use of dual-stack protocols and/or transition tunnels.
+
+One way of categorising the IPv6 security issues is as follows: those related to the new IPv6 packet extension headers, including fragmentation and other native header fields. Secondly there are security issues arising from the new Neighbor and Router Discovery protocols. Thirdly there are security issues relating to IPv4 to IPv6 transition tools, tunnelling and the new IPv6 support for mobility.
 
 As an example some new features include:
 
 \begin{enumerate}
 
-\item Many more ICMP message types! Cannot filter all of them (MTU discovery has to work). Must filter some of them. RFC4890 gives advice (Ref).
+\item Many more ICMP message types! Cannot filter all of them (e.g. MTU discovery has to work). Must filter some of them. RFC4890 gives advice (Ref).
 
-\item New methods for autoconfiguring addresses, routers, location of DNS servers. Good for the end-user but networking teams must do something to protect against rogue Router Advertisements (see RFC6104).
+\item New methods for autoconfiguring addresses, routers and DNS servers. This is good for the end-systems but networking teams must do something to protect against potential attacks, for example rogue Router Advertisements (see RFC6104).
 
-\item Longer IP addresses. On first consideration, this appears to make slow brute force scans of end-systems much more difficult but that is not always true. 
+\item Longer IP addresses. On first consideration, this appears to make slow brute force scans of end-systems much more difficult but that is not always true as there is often structure to the use of the address space. 
 
 \item IPv6 does not allow packet fragmentation en-route.  The minimum MTU supported is 1280 bytes. But you can still hurt yourself and send small fragments if you wish. 
 
@@ -22,7 +24,7 @@ As an example some new features include:
 
 \end{enumerate}
 
-The bad news is that many previous security issues from the IPv4-era have not changed. 
+The bad news is that many previous security issues from the IPv4-era have also not changed. 
 
 As long as all network monitoring and administration tools are up-to-date and aware of IPv6, many earlier attacks are still possible.
 
