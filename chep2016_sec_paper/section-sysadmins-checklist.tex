@@ -1,5 +1,8 @@
 
-This section contains the IPv6 security checklist for sysadmins and site networking/security teams. This presents the key IPv6 security issues to be addressed by WLCG sites as a starting point. More information is available in the documents referenced here or in the Introduction. 
+This section contains the IPv6 security checklist for sysadmins and site
+networking/security teams. This presents the key IPv6 security issues to be
+addressed by WLCG sites as a starting point. More information is available in
+the documents referenced here or in the Introduction. 
 
 
 
@@ -7,53 +10,128 @@ This section contains the IPv6 security checklist for sysadmins and site network
 
 
 \item {\bf Make an addressing plan}\\
-One of the most important design decisions for a site networking team creating an IPv6 deployment plan is to create a well thought out management plan for their IPv6 address space. This needs to include consideration as to how to manage a dual-stack network. IPv6 address space (typically a /48 - default size as in RFC3177) will have been allocated to the site by its NREN or other ISP. Consideration needs to be given to the routing and switching design of the network. The number of subnets, the routing architecture, and the address allocation within subnets etc. all need to be included. 
+One of the most important design decisions for a site team creating
+an IPv6 deployment plan is to create a management plan for their IPv6 address space.
+It should match the acceptable usage and access policy of the organisation.
+This needs to include consideration as to how to manage a dual-stack network,
+possibly reviewing the security aspects of the existing IPv4 infrastructure.
+IPv6 address space (typically a /48 - default size as in RFC3177 \cite{rfc})
+will have been allocated to the site by its NREN or other ISP. Consideration
+needs to be given to the routing and switching design of the network
+\cite{planningguides}. The number of subnets, the routing architecture,
+and the address allocation within subnets etc. all need to be included. 
 
-See http://www.internetsociety.org/deploy360/resources/ipv6-address-planning-guidelines-for-ipv6-address-allocation/   and https://www.ripe.net/support/training/material/IPv6-for-LIRs-Training-Course/Preparing-an-IPv6-Addressing-Plan.pdf  
+
+\item {\bf Decide whether to use DHCPv6 or SLAAC (+dDNS)} \\
+The second most important decision - and very much linked to the one above -
+to be made by a site networking team is whether or not to use one of the important
+new features of IPv6, i.e. the end-system use of  IPv6 Stateless Address
+Autoconfiguration (see RFC4862 \cite{rfc}).
+As you are likely to prefer that server systems have fixed addresses
+(either manual or DHCPv6), the use of SLAAC in that case should be accompanied by
+dynamic DNS. Looking at these three protocols (SLAAC, dDNS and DHCPv6) from a
+security standpoint (see RFC4942 \cite{rfc}), the main difference in available
+spoofing/hijacking channels is mainly in the fact that configuration via the ICMPv6
+Router Advertisement protocol is multicast to the network segment and received
+by hosts.
 
 
-\item {\bf Decide whether to use DHCPv6 or SLAAC+DDNS} \\
-The second most important decision (and very much linked to the one above) to be made by a site networking team is whether or not to use one of the important new features of IPv6, i.e. the end-system use of  IPv6 Stateless Address Autoconfiguration (see RFC4862).  And use of dynamic DNS.  You are likely to prefer that server systems have fixed addresses (either manual or DHCPv6).
-
-
-
-\item {\bf Ensure all security/network monitoring/logging are IPv6-capable}\\
-Important for networking teams, security teams and also end systems tools for sysadmins. All monitoring and logging tools (commercial, open-source, home written) need to be evaluated and tested for operation on IPv6. New longer addresses and multiple addresses per network card. Do they work in a dual-stack environment and can they simultaneously monitor both stacks.  What about tools analysing log files - does parsing work?
-
+\item {\bf Ensure all security/network monitoring/logging tools are IPv6-capable}\\
+All monitoring and logging tools (commercial, open-source, home written),
+at any hierarchical level of the organisation (central and end-user),
+need to be evaluated and tested for operation on IPv6.
+They should properly deal with longer addresses, the new address syntax, multiple
+addresses per network card, etc.
+Tools should be certified to work in a dual-stack environment, with the
+ability to simultaneously monitor both stacks. Tools analysing log files
+should be capable of parsing address syntax for both stacks.
 
 \item {\bf Filter IPv6 packets that enter and leave your network/system}\\
-IPv4-only networks will have end systems where IPv6 is enabled by default. May cause big security problems with IDS and Firewalls not handling IPv6 traffic correctly. If you don't want IPv6 best to turn it off and/or filter it at both the network and system level.
-
-
-
-For filtering of ICMPv6 packets - see next topic.
+IPv4-only networks include end systems where IPv6 is enabled by default.
+This may open significant security breach opportunities
+if IDS and Firewalls are not handling IPv6 traffic correctly.
+Consideration should be given to the various options of setting
+up system- or network-level filtering. See also the following items
+for hints on the performance implication of IPv6 filering and the
+need to keep these measures in sync with the IPv4 ones.
+Switching off/filtering IPv6 at the network level isn't a realistic
+option anymore, while specific legacy systems may need to be protected
+by disabling their IPv6 stack.
+The specific issue of filtering of ICMPv6 packets is dealt with in the
+next topic. 
 
 
 \item {\bf Filter ICMPv6 messages wisely} \\
-Many ICMPv6 messages have an essential role in establishing or maintaining IPv6 communication. Some ICMPv6 messages can therefore not be blocked (unlike in IPv4). Other types of ICMPv6 if allowed through the site firewall may lead to security issues. See RFC 4890 for a full discussion and for advice.
+Many ICMPv6 messages have an essential role in establishing or maintaining
+IPv6 communication.
+Some ICMPv6 messages can therefore not be blocked (unlike in IPv4).
+Other types of ICMPv6 messages may lead to security issues if allowed through
+the site border. See RFC4890 \cite{rfc} for a full discussion and detailed advice.
+Our groups' knowledge base \cite{knowledgebase} offers RFC4890-compliant example
+rules for IOS and JunOS devices.
 
-\item {\bf Allow special-purpose headers only if needed} \\
-Extension Headers open up your end system and site to all sorts of vulnerabilities. RFC
 
-Filter packets with inappropriate Extension Headers. Extension headers complicate the task of firewall ACLs. The site needs to verify whether its ACLs also process extension headers (to parse them to find the upper-layer payloads) and to block unwanted extension headers see RFC5095 and RFC7045.
+\item {\bf Allow special-purpose IPv6 Extension Headers only if needed} \\
+Although the requirement for IPv6 stacks to fully implement the handling
+of {\it all} IPv6 Extension Headers (for IPSEC, Mobile IP, etc...) has been lifted
+(per RFC5095 \cite{rfc}),
+the processing of these may open up end systems and sites to a large
+vulnerability space. 
+Packets with inappropriate, unexpected or malformed Extension Headers should
+be filtered. The processing of Extension Headers can significantly complicate the
+task of firewall ACLs, especially if headers extend beyond the first packet
+fragment.
+Sites need to verify whether running ACLs have the ability to process Extension
+Headers and block unwanted extension headers as prescribed by RFC7045
+\cite{rfc}.
 
 
-\item {\bf Use synchronised IPv4/v6 access rules} \\
-For dual-stack networks MUCH much better to have identical firewall rules (site and end-system) for both stacks. Making them different can cause problems with
-
+\item {\bf Use synchronised IPv4/IPv6 access rules} \\
+The management of production dual-stack networks, especially when reacting
+to security incidents, is much simpler if semantically equivalent firewall rules
+(site and end-system) are deployed for both stacks. Having to always
+update lists in tandem is error-prone and may leave unnoticed security holes
+(or unwanted denial of service) behind. Lacking the capability
+of networking firmware to express rules in common lists, one may think
+of generating such lists from a common template. The fact that there are
+IPv6-specific measures to take (see e.g. the ICMPv6 point above) may lead
+to assemble entirely new configurations. These should never forget {\it any}
+of the existing IPv4 rules. The option between modeling IPv6 lists on
+existing IPv4 lists or taking the IPv6 rollout as a chance to refresh
+both lists should be evaluated.
 
 
 \item {\bf Deploy RA-Guard or otherwise deal with Rogue RAs} \\
-Neigbor Discovery and Router discovery are two important new features of IPv6. Opens up to several different security problems. Rogue routers can send out false router announcements (RAs) to persuade end systems to send packets to them for routing allowing for lack of privacy and man in the middle attacks.  Several ways of addressing this, one of which is to deploy RA-Guard.
+Neighbor Discovery and Router discovery are two important new features of IPv6
+(actually ICMPv6).
+The fact that they are generally based on IPv6 multicast opens up to several
+different security problems. Rogue routers or attackers can send out false router
+announcements (RAs) to persuade end systems to send packets to them
+for routing allowing for lack of privacy and man in the middle attacks.
+RFC6104 describes the issue in detail and covers 
+several ways of addressing the issue. The only sure-fire measure is
+to apply a filter on all LAN active parts, e.g. by having
+them accept RAs only from a single endpoint of the network, 
+via the RA-Guard (RFC6105) protocol. Making sure all of the network infrastructure
+supports RA-Guard may take a significant amount of effort (or equipment
+replacement), so the other measures described on RFC6104 may need to
+be deployed in the meantime.
 
 
 \item {\bf Do not be tempted by transition technologies} \\
-By this  we mean think very carefully before deciding to use or allow the use of tunnelling technologies.  Dual-stack systems are the simplest approach. NAT64 is being used by some WLCG sites but we do not in general recommend this unless ...
-problems with tunnels and protocol translations are ...
+Think carefully before giving the possibility of using or allowing 
+tunnelling technologies as an IPv4$\rightarrow$IPv6 transition tool.
+These usually do not save IPv4 address space. Their additional
+complexity doesn't gain any real advantage over the simpler
+approach of deploying dual-stack systems and offers a wide space
+for security exploits. NAT64/DNS64 (RFC6146/6147 \cite{rfc}) may become
+a useful tool when the transition process is almost complete and the burden
+of managing IPv4 on the LAN can be eventually removed.
 
 \item {\bf Filter/disable IPv6-on-IPv4 tunnels} \\
-We recommend not using such tunnels (see above).  So we suggest that sites should filter or disable these.
-
+As we don't recommend using such tunnels (see above), the IPv4 protocol
+number 41 (IPv6 encapsulation) should be disabled and filtered throughout
+the site network.
 
 \end{enumerate}
 
