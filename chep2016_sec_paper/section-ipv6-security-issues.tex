@@ -1,16 +1,18 @@
-This section presents some security concerns that arise from the use of IPv6 networking protocols. 
+% This section presents some security concerns that arise from the use of IPv6 networking protocols. 
 
-One of the potential advantages claimed by supporters of IPv6 was that security was explicitly addressed in the design. The mandatory use of IPsec, for example, seemed to be an early success but problems related to key management mean that the mandatory support of IPsec has since been relaxed (see section 11 RFC6434). 
 
-The introduction of any new protocol can of course introduce security problems. For IPv6, these include the lack of maturity of the implementations which therefore are highly likely to still contain many new vulnerabilities. The need for IPv6-compliant monitoring and tools and the lack of education and experience of sysadmins both also cause concern. There are problems introduced by the need to support a transition process, including the complications arising from the use of dual-stack protocols and/or transition tunnels.
 
-One way of categorising the IPv6 security issues is as follows: those related to the new IPv6 packet extension headers, including fragmentation and other native header fields. Secondly there are security issues arising from the new Neighbor and Router Discovery protocols. Thirdly there are security issues relating to IPv4 to IPv6 transition tools, tunnelling and the new IPv6 support for mobility.
+The introduction of any new protocol can of course introduce new security problems. For IPv6, these include the lack of maturity of the implementations which therefore are highly likely to still contain many new vulnerabilities. The need for IPv6-compliant monitoring and tools and the lack of education and experience of sysadmins both also cause concern. There are problems introduced by the need to support a transition process, including the complications arising from the use of dual-stack protocols and/or transition tunnels.
 
-As an example some new features include:
+One of the potential advantages claimed by supporters of IPv6 was that security was explicitly addressed in the design. The mandatory use of IPsec (see RFC4301 \cite{rfc}), for example, seemed to be an early success but problems related to key management led to the mandatory support of IPsec being relaxed (see section 11 of RFC6434 \cite{rfc}). 
+
+% One way of categorising the IPv6 security issues is as follows: those related to the new IPv6 packet extension headers, including fragmentation and other native header fields. Secondly there are security issues arising from the new Neighbor and Router Discovery protocols. Thirdly there are security issues relating to IPv4 to IPv6 transition tools, tunnelling and the new IPv6 support for mobility.
+
+Examples of some other new features resulting in security concerns include:
 
 \begin{enumerate}
 
-\item Many more ICMP message types! Cannot filter all of them (e.g. MTU discovery has to work). Must filter some of them. RFC4890 gives advice (Ref).
+\item Many more ICMP message types! Cannot filter all of them (e.g. MTU discovery has to work). Must filter some of them. RFC4890 gives advice \cite{rfc}.
 
 \item New methods for autoconfiguring addresses, routers and DNS servers. This is good for the end-systems but networking teams must do something to protect against potential attacks, for example rogue Router Advertisements (see RFC6104).
 
