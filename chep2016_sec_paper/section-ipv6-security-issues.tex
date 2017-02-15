@@ -12,9 +12,9 @@ Examples of some other new features resulting in security concerns include:
 
 \begin{enumerate}
 
-\item {\bf Many more ICMP message types}. It is not possible to filter all of them, e.g. PathMaximumum Transmission Unit (MTU) Discovery has to work, but sites must filter some of them. RFC4890 \cite{rfc} gives advice.
+\item {\bf Many more ICMP message types}. It is not possible to filter all of them, e.g. Path Maximumum Transmission Unit (MTU) Discovery has to work, but sites are recommended to filter some other types of ICMPv6. RFC4890 \cite{rfc} gives advice.
 
-\item {\bf New methods for autoconfiguring addresses, and the locations of routers and DNS servers}. This is good news for the end-systems but networking teams must do something to protect against potential attacks, for example rogue Router Advertisements (see RFC6104 \cite{rfc}).
+\item {\bf New methods for autoconfiguring addresses, and the locations of routers and DNS servers}. This is good news for the end-systems but networking teams must now protect against potential attacks, for example rogue Router Advertisements (see RFC6104 \cite{rfc}).
 
 \item {\bf Longer IP addresses}. On first consideration, this appears to make brute force scans of end-systems much more difficult but that is not always true as there is often structure to the use of the address space. 
 
@@ -27,18 +27,16 @@ Examples of some other new features resulting in security concerns include:
 \end{enumerate}
 
 The bad news is that many previous security issues from the IPv4-era have also not changed. 
-
-As long as all network monitoring and administration tools are up-to-date and aware of IPv6, many earlier attacks are still possible.
+%As long as all network monitoring and administration tools are up-to-date and aware of IPv6, 
+Many earlier attacks are still possible:
 
 \begin {itemize}
-
-\item Broadcasts and Multicasts are still there, with a vengeance.
-\item Can still use IP headers for out-of-band communications.
-\item Can still pollute Ethernet address discovery (Neighbor Discovery instead of Address Resolution Protocol).
-\item Can still run a rogue DHCP server.
-\item Can still try forging and injecting packets into the local network. 
-\item The upper-layer protocols did not change!
-
+\item Broadcasts and Multicasts are still there, with a vengeance
+\item Can still use IP headers for out-of-band communications
+\item Can still pollute Ethernet address discovery (Neighbor Discovery instead of Address Resolution Protocol)
+\item Can still run a rogue DHCP server
+\item Can still try forging and injecting packets into the local network
+\item The upper-layer protocols did not change
 \end {itemize}
 
 
