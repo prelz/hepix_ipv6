@@ -12,17 +12,17 @@ Examples of some other new features resulting in security concerns include:
 
 \begin{enumerate}
 
-\item Many more ICMP message types! Cannot filter all of them (e.g. MTU discovery has to work). Must filter some of them. RFC4890 gives advice \cite{rfc}.
+\item {\bf Many more ICMP message types}. It is not possible to filter all of them, e.g. PathMaximumum Transmission Unit (MTU) Discovery has to work, but sites must filter some of them. RFC4890 \cite{rfc} gives advice.
 
-\item New methods for autoconfiguring addresses, routers and DNS servers. This is good for the end-systems but networking teams must do something to protect against potential attacks, for example rogue Router Advertisements (see RFC6104).
+\item {\bf New methods for autoconfiguring addresses, and the locations of routers and DNS servers}. This is good news for the end-systems but networking teams must do something to protect against potential attacks, for example rogue Router Advertisements (see RFC6104 \cite{rfc}).
 
-\item Longer IP addresses. On first consideration, this appears to make slow brute force scans of end-systems much more difficult but that is not always true as there is often structure to the use of the address space. 
+\item {\bf Longer IP addresses}. On first consideration, this appears to make brute force scans of end-systems much more difficult but that is not always true as there is often structure to the use of the address space. 
 
-\item IPv6 does not allow packet fragmentation en-route.  The minimum MTU supported is 1280 bytes. But you can still hurt yourself and send small fragments if you wish. 
+\item {\bf IPv6 does not allow packet fragmentation en-route}. The minimum MTU supported is 1280 bytes, but you can still hurt yourself by sending smaller fragments if you wish. 
 
-\item Not really a feature of IPv6 proper, but much of the network stack and application code is not yet hardened and therefore is potentially vulnerable to attack.
+\item Not really a feature of IPv6 proper, but much of the {\bf network stack and application code is not yet hardened} and therefore is potentially vulnerable to attack.
 
-\item Transitional technologies (e.g. tunnels) have intrinsic vulnerabilities but don't need to be there forever.
+\item {\bf Transitional technologies} (e.g. tunnels) have intrinsic vulnerabilities but don't need to be there forever.
 
 \end{enumerate}
 
@@ -30,16 +30,16 @@ The bad news is that many previous security issues from the IPv4-era have also n
 
 As long as all network monitoring and administration tools are up-to-date and aware of IPv6, many earlier attacks are still possible.
 
-\begin {enumerate}
+\begin {itemize}
 
 \item Broadcasts and Multicasts are still there, with a vengeance.
 \item Can still use IP headers for out-of-band communications.
-\item Can still pollute Ethernet address discovery (ND instead of ARP).
+\item Can still pollute Ethernet address discovery (Neighbor Discovery instead of Address Resolution Protocol).
 \item Can still run a rogue DHCP server.
 \item Can still try forging and injecting packets into the local network. 
 \item The upper-layer protocols did not change!
 
-\end {enumerate}
+\end {itemize}
 
 
 
