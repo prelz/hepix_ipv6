@@ -27,8 +27,9 @@ The second most important decision - and very much linked to the one above -
 to be made by a site networking team is whether or not to use one of the important
 new features of IPv6, i.e. the end-system use of  IPv6 Stateless Address
 Autoconfiguration (see RFC4862 \cite{rfc}).
-As you are likely to prefer that server systems have fixed addresses
-(either manual or DHCPv6), the use of SLAAC in that case should be accompanied by
+You may prefer that server systems have fixed IPv6 addresses
+(either manual or DHCPv6), while the use of SLAAC for servers
+should be accompanied by
 dynamic DNS. Looking at these three protocols (SLAAC, dDNS and DHCPv6) from a
 security standpoint (see RFC4942 \cite{rfc}), the main difference in available
 spoofing/hijacking channels is due to the fact that configuration via the ICMPv6
@@ -49,7 +50,7 @@ should be capable of parsing address syntax for both stacks.
 \item {\bf Filter IPv6 packets that enter and leave your network/system}\\
 IPv4-only networks include end systems where IPv6 is enabled by default.
 This may open significant security breach opportunities
-if IDS and Firewalls are not handling IPv6 traffic correctly.
+if intrusion detection systems and Firewalls are not handling IPv6 traffic correctly.
 Consideration should be given to the various options of setting
 up system- or network-level filtering. See also the following items
 for hints on the performance implication of IPv6 filering and the
@@ -67,13 +68,13 @@ IPv6 communication.
 Some ICMPv6 messages can therefore not be blocked (unlike in IPv4).
 Other types of ICMPv6 messages may lead to security issues if allowed through
 the site border. See RFC4890 \cite{rfc} for a full discussion and detailed advice.
-Our groups' knowledge base \cite{ipv6wg} offers RFC4890-compliant example
+Our group's knowledge base \cite{ipv6wg} offers RFC4890-compliant example
 rules for IOS and JunOS devices.
 
 
 \item {\bf Allow special-purpose IPv6 Extension Headers only if needed} \\
 Although the requirement for IPv6 stacks to fully implement the handling
-of {\it all} IPv6 Extension Headers (for IPSEC, Mobile IP, etc...) has been lifted
+of {\it all} IPv6 Extension Headers (for IPSEC, Mobile IP, etc.) has been lifted
 (per RFC5095 \cite{rfc}),
 the processing of these may open up end systems and sites to a large
 vulnerability space. 
@@ -104,13 +105,13 @@ both lists should be evaluated.
 \item {\bf Deploy RA-Guard or otherwise deal with Rogue RAs} \\
 Neighbor Discovery and Router discovery are two important new features of IPv6
 (actually ICMPv6).
-The fact that they are generally based on IPv6 multicast opens up to several
+The fact that they are generally based on IPv6 multicast exposes sites to several
 different security problems. Rogue routers or attackers can send out false router
 announcements (RAs) to persuade end systems to send packets to them
 for routing allowing for lack of privacy and man in the middle attacks.
 RFC6104 describes the issue in detail and covers 
 several ways of addressing the issue. The only sure-fire measure is
-to apply a filter on all LAN active parts, e.g. by having
+to apply a filter on all local area network (LAN) active parts, e.g. by having
 them accept RAs only from a single endpoint of the network, 
 via the RA-Guard (RFC6105) protocol. Making sure all of the network infrastructure
 supports RA-Guard may take a significant amount of effort (or equipment
@@ -119,7 +120,7 @@ be deployed in the meantime.
 
 
 \item {\bf Do not be tempted by transition technologies} \\
-Think carefully before giving the possibility of using or allowing 
+Think carefully before using or allowing 
 tunnelling technologies as an IPv4$\rightarrow$IPv6 transition tool.
 These usually do not save IPv4 address space. Their additional
 complexity doesn't gain any real advantage over the simpler

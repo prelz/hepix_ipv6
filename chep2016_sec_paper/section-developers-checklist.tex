@@ -51,7 +51,7 @@ if (getaddrinfo(dest\_host, dest\_serv, \&ai\_req, \&ai\_ans) != 0) \{\\
 \end{figure}
 When applications developed in the golden
 era of IPv4-only Internet face the transition to IPv6, the brunt of the
-work often falls on the shoulders of developers, who belong to a different
+work often falls on the shoulders of developers who belong to a different
 generation from the original authors. Figure \ref{fig:pseudocode} tries to
 visualise the extent of the changes that the core code of any
 IP-capable application undergoes in the transition. In addition to
@@ -61,7 +61,7 @@ no IP endpoint can be satisfied with handling just {\it one}
 IP address (as any public IPv6 endpoint communicates via the
 public and on the link-local address at least), but loops and address
 ordering start appearing everywhere. We identify the following implications of this
-fundamental fact on developers' practice, in rough descending order
+fundamental fact on developers' practice, in roughly descending order
 of importance:
 \begin{enumerate}
 \item {\bf Plan for extensive testing.}\\
@@ -86,7 +86,7 @@ of importance:
       code to iterate and re-iterate on the list, handle exceptions and
       possibly operate in parallel on various entries
       to implement some form of `happy-eyeballs'\footnote{See RFC6555 \cite{rfc}.}
-      alghorithm. As the ordering of both source and destination addresses
+      algorithm. As the ordering of both source and destination addresses
       established at the system level by the system
       administrator\footnote{Via {\tt /etc/gai.conf}, {\tt ip addrlabel} or their equivalent.}
       may have security implications, developers should go the extra mile to 
