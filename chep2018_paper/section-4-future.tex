@@ -1,1 +1,40 @@
 %section 4
+\subsection{Obstacles and potential show-stoppers}
+Our experience with the transition of WLCG Tier-1 and Tier-2 centers so far 
+has identified various cases where the IPv4$\rightarrow$IPv6 transition has
+consequences that exceed the simple replacement of the IP {\it transport} layer.
+These broadly fall in the following categories:
+\begin{enumerate}
+\item Software components and protocol with fixed-size storage for network
+addresses, for example in (Grid-)FTP and AFS. This can be overcome by appropriate
+protocol extensions (e.g. the introduction of 'extended' FTP commands
+{\tt EPRT}, {\tt EPSV}, etc.), with a large development effort required.
+In certain cases (AFS) this effort was determined to be too large and not
+worthwhile, while the GrifFTP 'v2' extensions were issued with no IPv6 support.
+\item Software components and protocols that assume single addresses or a single
+IP protocol for 
+network endpoints (to various extents, all the components in the WLCG software
+matrix). While all Operating Systems do provide hybrid network stacks and prioritized/configurable
+source and destination address selection\footnote{Address selection is regulated in most cases by RFC6724.}, applications should always iterate over multiple
+possible results (belonging to multiple IP protocol versions) and provide configurable
+overrides and preferences. 
+\item Software components and network infrastructures providing asymmetric
+handling, or separate code stacks, for IPv4 and IPv6 traffic: these also
+have the ability to load the network transport choice with measurable
+performance consequences.
+\end{enumerate}
+Detecting and explaining these IPv4/IPv6 asymmetries and fostering improved
+symmetry across the WLCG software matrix has been a long-standing activity
+for our group. As there is inherent risk in changing, testing and rolling
+out (sometimes sizable) software changes when no functional
+issue requires immediate attention, these changes are often not shortlisted
+for deployment by software development teams. We need to continue tracking
+these issues down to the
+level where no deployment of measurable performance asymmetry between the two
+protocols is seen: this can be seen as the backdrop of any future activity.
+
+\subsection{Further steps}
+
+\subsection{IPv6-only scenarios}
+
+\subsection{Conclusion}
