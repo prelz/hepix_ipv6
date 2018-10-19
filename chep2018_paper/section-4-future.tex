@@ -34,6 +34,27 @@ level where no deployment of measurable performance asymmetry between the two
 protocols is seen: this can be seen as the backdrop of any future activity.
 
 \subsection{Further steps}
+Once the data transfer monitoring infrastructure described in Section
+\ref{sec-monitoring} is completed and covers all services, two cases
+need to be consistently monitored and, where needed, investigated
+and resolved:
+\begin{enumerate}
+\item cases where the fraction of data transferred over IPv6 is lower than expected:
+the preference for IPv6 over IPv4 has to established throughout the system;
+\item cases where the transfer performance is either significantly worse 
+or significantly better on IPv6 over IPv4: asymmetries in the routing and
+transport should be identified, especially in the LHCONE and LHCOPN networks.
+\end{enumerate}
+\par
+Over a stable and understood data transfer network 
+IPv6-only worker nodes should encounter no more operational anomalies
+than other types of worker nodes. The 
+job failure rate on IPV6-only, dual-stack and IPv4-only worker nodes should
+be monitored statistically and deviations properly troubleshot.
+\par
+Once the use-case of IPv6-only worker nodes operates smoothly, the next
+step in the transition roadmap is moving services and network segments to
+IPv6-only operation.
 
 \subsection{IPv6-only scenarios}
 
