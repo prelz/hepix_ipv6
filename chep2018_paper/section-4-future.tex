@@ -57,16 +57,42 @@ step in the transition roadmap is moving services and network segments to
 IPv6-only operation.
 
 \subsection{IPv6-only scenarios}
-The final step of the IPv4$\rightarrow$IPv6 transition is the phasing out of IPv4. While still in the non-near future,  this is also arguably the only step
+The final step of the IPv4$\rightarrow$IPv6 transition is the phasing out of
+IPv4. While still in the non-near future, this is also arguably the only step
 that can bring along a desirable reduction
-in the infrastructure maintenance effort: in the current transition phase
-many components and configurations currently have to be maintained in parallel.
-To demonstrate that the close of the transition is a realistic
+in the infrastructure maintenance effort, so it shouldn't be delayed
+without reason. Many of the issues described in the previous sections 
+actually arise
+from the fact that in the current transition phase many components and
+configurations have to be maintained in parallel.
+\par
+In order to demonstrate that the close of the transition is a realistic
 objective, IPv6-only operation of an entire WLCG Tier-X site will
 need to have been proven by all experiments and sites run by most WLCG
 partners, with residual IPv4-only services either deprecated or made
-accessible via protocol translation techniques (e.g. DNS64/NAT64). 
+accessible via protocol translation techniques (e.g. DNS64/NAT64, see
+NAT64/DNS64 (RFC6146/6147 \cite{rfc})). 
 \par
 {\it XXX Should we mention the few experiments performed so far here ?}
 
 \subsection{Conclusion}
+The target case of allowing successful execution of generic WLCG job payloads
+on IPv6-only worker nodes has been driving the IPv4-IPv6 dual-stack deployment
+of storage services across the WLCG production infrastructure. According to
+the current progress tracking, summarised in Sections \ref{ssec-t1trans} and
+\ref{ssec-t2trans} above, this step should be completed at CERN, Tier-1
+and Tier-2 centers by the end of LHC Run-II (end of 2018). A few residual
+issues were identified in the software stack in this process.
+\par
+Data from
+a complete and pervasive monitoring infrastructure are crucial in building
+confidence in the new transport layer, which is expected to provide the
+{\it same} level of performance and reliability as the one it replaces: these
+come from various sources (see Section \ref{sec-monitoring}), with a few
+remaining blind spots being covered.
+\par
+Feedback from the actual operation of  
+IPv6-only computing farms will then determine the time-scale and viability of
+driving the transition process to its natural ending, when the burden
+of operating a duplicated transport infrastructure will be eventually lifted.
+
