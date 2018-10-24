@@ -1,0 +1,172 @@
+\documentclass{webofc}
+\usepackage[varg]{txfonts}   % Web of Conferences font
+%
+% Put here some packages required or/and some personnal commands
+%
+%
+\begin{document}
+%
+\title{IPv6 in production: its deployment and usage in WLCG}
+%
+% subtitle is optionnal
+%
+%%%\subtitle{Do you have a subtitle?\\ If so, write it here}
+
+\author{
+  \firstname{Marian} \lastname{Babik}\inst{1}\and
+  \firstname{Martin} \lastname{Bly}\inst{2}\and
+  \firstname{Tim} \lastname{Chown}\inst{3}\and
+  \firstname{Ji\v{r}i} \lastname{Chudoba}\inst{4}\and
+  \firstname{Catalin} \lastname{Condurache}\inst{2}\and
+  \firstname{Alastair} \lastname{Dewhurst}\inst{2}\and
+  \firstname{Xavier} \lastname{Espinal Curull}\inst{1}\and
+  \firstname{Thomas} \lastname{Finnern}\inst{5}\and
+  \firstname{Terry} \lastname{Froy}\inst{6}\and
+  \firstname{Costin} \lastname{Grigoras}\inst{1}\and
+  \firstname{Kashif} \lastname{Hafeez}\inst{2}\and
+  \firstname{Bruno} \lastname{Hoeft}\inst{7}\and
+  \firstname{Hironori} \lastname{Ito}\inst{8}\and
+  \firstname{David P.} \lastname{Kelsey}\inst{2}\thanks{\email{david.kelsey@stfc.ac.uk}} \and
+  \firstname{Fernando} \lastname{L\'opez~Mu\~noz}\inst{9,10}\fnsep\and
+  \firstname{Edoardo} \lastname{Martelli}\inst{1}\and
+  \firstname{Raja} \lastname{Nandakumar}\inst{2}\and
+  \firstname{Kars} \lastname{Ohrenberg}\inst{5}\and
+  \firstname{Francesco} \lastname{Prelz}\inst{11}\and
+  \firstname{Duncan} \lastname{Rand}\inst{12}\and
+  \firstname{Andrea} \lastname{Sciab\`a}\inst{1}\and
+  \firstname{Ulf} \lastname{Tigerstedt}\inst{13}\and
+  \firstname{Dennis} \lastname{Van Dok}\inst{14}
+}
+
+\institute{ 
+  European Organization for Nuclear Research (CERN), CH-1211 Geneva 23, Switzerland
+\and
+  STFC Rutherford Appleton Laboratory, Harwell Campus, Didcot, Oxfordshire OX11 0QX, United Kingdom
+\and
+  JISC, Lumen House, Library Avenue, Harwell Campus, Didcot, Oxfordshire OX11 0SG, United Kingdom
+\and
+  Institute of Physics, Academy of Sciences of the Czech Republic, Na Slovance 2 182 21 Prague 8, Czech Republic
+\and
+  Deutsches Elektronen-Synchrotron DESY, Notkestra\ss e 85, D-22607 Hamburg, Germany
+\and
+  Queen Mary University of London, Mile End Road, London E1 4NS, United Kingdom
+\and
+  Karlsruher Institut f\"ur Technologie, Hermann-von-Helmholtz-Platz 1, D-76344 Eggenstein-Leopoldshafen, Germany 
+\and
+  Brookhaven National Laboratory, Upton, NY 11973-5000, U.S.A.
+\and
+  Port d'Informaci\'o Cient\'ifica, Campus UAB, Edifici D, E-08193 Bellaterra, Spain
+\and
+  Centro de Investigaciones Energ\'eticas, Medioambientales y Tecnol\'ogicas (CIEMAT), Madrid, Spain
+\and
+  INFN, Sezione di Milano, via G. Celoria 16, I-20133 Milano, Italy
+\and
+  Imperial College London, South Kensington Campus, London SW7 2AZ, United Kingdom
+\and
+  Helsinki Institute of Physics, Gustaf H\"allstri\"omin katu 2, FI-00014 Helsinki, Finland
+\and
+  Nikhef, Science Park 105, NL-1098 XG Amsterdam, The Netherlands. 
+          }
+
+\abstract{%
+  The fraction of general internet traffic carried over IPv6 continues to 
+  grow rapidly. The transition of WLCG central and storage services to 
+  dual-stack IPv4/IPv6 is progressing well, thus enabling the use of IPv6-only
+  CPU resources as agreed by the WLCG Management Board and presented by us at 
+  CHEP2016. By April 2018, all WLCG Tier 1 data centres will provide access to
+  their services over IPv6. The LHC experiments have requested all WLCG Tier 2
+  centres to provide dual-stack access to their storage by the end of LHC Run 2.
+}
+%
+\maketitle
+%
+\section{Introduction}
+\label{sec-intro}
+\input{section-1-introduction.tex}
+
+\section{Status of the transition}
+\label{sec-transition-status}
+\input{section-2-transition.tex}
+
+\section{Monitoring}
+\label{sec-monitoring}
+\input{section-3-monitoring.tex}
+
+\section{Future plans and conclusions}
+\label{sec-future}
+\input{section-4-future.tex}
+
+%For one-column wide figures use syntax of figure~\ref{fig-1}
+%\begin{figure}[h]
+%% Use the relevant command for your figure-insertion program
+%% to insert the figure file.
+%\centering
+%\includegraphics[width=1cm,clip]{tiger}
+%\caption{Please write your figure caption here}
+%\label{fig-1}       % Give a unique label
+%\end{figure}
+%
+%For two-column wide figures use syntax of figure~\ref{fig-2}
+%\begin{figure*}
+%\centering
+%% Use the relevant command for your figure-insertion program
+%% to insert the figure file. See example above.
+%% If not, use
+%\vspace*{5cm}       % Give the correct figure height in cm
+%\caption{Please write your figure caption here}
+%\label{fig-2}       % Give a unique label
+%\end{figure*}
+%
+%For figure with sidecaption legend use syntax of figure
+%\begin{figure}
+%% Use the relevant command for your figure-insertion program
+%% to insert the figure file.
+%\centering
+%\sidecaption
+%\includegraphics[width=5cm,clip]{tiger}
+%\caption{Please write your figure caption here}
+%\label{fig-3}       % Give a unique label
+%\end{figure}
+%
+%For tables use syntax in table~\ref{tab-1}.
+%\begin{table}
+%\centering
+%\caption{Please write your table caption here}
+%\label{tab-1}       % Give a unique label
+%% For LaTeX tables you can use
+%\begin{tabular}{lll}
+%\hline
+%first & second & third  \\\hline
+%number & number & number \\
+%number & number & number \\\hline
+%\end{tabular}
+%% Or use
+%\vspace*{5cm}  % with the correct table height
+%\end{table}
+%
+% BibTeX or Biber users please use (the style is already called in the class, ensure that the "woc.bst" style is in your local directory)
+% \bibliography{name or your bibliography database}
+%
+% Non-BibTeX users please use
+%
+\begin{thebibliography}{}
+%
+% and use \bibitem to create references.
+%
+\bibitem{rfc} All Internet Engineering Task Force Requests For Comments (RFC) do
+cuments are available
+from URLs such as http://www.ietf.org/rfc/rfcNNNN.txt where NNNN is the RFC numb
+er, for example {\tt http://www.ietf.org/rfc/rfc2460.txt}
+% Format for Journal Reference
+Journal Author, Journal \textbf{Volume}, page numbers (year)
+% Format for books
+\bibitem{RefB}
+Book Author, \textit{Book title} (Publisher, place, year) page numbers
+% etc
+\end{thebibliography}
+
+\end{document}
+
+% end of file template.tex
+
+<div id='footer'><table width='100%'><tr><td class='right'><a href='http://fusioninventory.org/'><span class='copyright'>FusionInventory 9.1+1.0 | copyleft <img src='/glpi/plugins/fusioninventory/pics/copyleft.png'/>  2010-2016 by FusionInventory Team</span></a></td></tr></table></div>

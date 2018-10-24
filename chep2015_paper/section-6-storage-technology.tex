@@ -1,0 +1,24 @@
+The old testbed was based on GridFTP\cite{GFTP1.0, GFTP2.0} transfers between small storage elements. The software used on the servers were Globus gridftpd, 
+DPM (the Disk Pool Manager) and dCache. 
+Some of these needed configuration changes from the default to work with IPv6.
+
+\begin{itemize}
+\item DPM needed a new MySQL (v5.5+) and several configuration changes to do any transfers over IPv6.
+\item dCache got GridFTP working in version 2.9.4, but needed no configuration changes, except for the use of multiple hostnames (see below).
+\item StoRM needs configuration changes but works if it's new enough.
+\item XRootD got first IPv6 support in version 4.0.0; it is fully dual-stack since. Version 4.1.0 brought a lot of fixes for the IPv6 functionality.
+\item Globus gridftpd needs configuration changes.
+\end{itemize}
+
+For the FTS3-based testbed the SRM protocol \cite{SRM2.2} was selected for initiating transfers as it is more real-life production-like 
+than the old gridftp-based one. 
+
+All sites participating in the new testbed selected dCache, as it had matured into the only full-stack storage 
+system to fully support dualstack and IPv6-only setups. Even with full support for IPv6 as default, the testbed's setup with 
+multiple hostnames (dualstack, IPv4-only and IPv6-only) needed configuration changes for the SRM door for it to recognize that it had multiple hostnames.
+
+A new addition was also a IPv6-only storage element, to test how well clients and FTS3 could handle a storage element that is not dual-stacked.
+This required very little configuration but would not work without the latest release of dCache, 2.12.
+
+
+

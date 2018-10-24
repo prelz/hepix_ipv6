@@ -1,0 +1,107 @@
+\begin{figure}
+\begin{framed}
+{\tt\small
+struct hostent  *resolved\_name=NULL;\\
+struct servent  *resolved\_serv=NULL;\\
+struct protoent *resolved\_proto=NULL;\\
+static char     *dest\_host="some.ip.host", *dest\_serv="ipservice";\\
+struct sockaddr\_in destination;\\ 
+resolved\_host = gethostbyname(dest\_host);\\
+resolved\_serv = getservbyname(dest\_serv, NULL);\\
+if (resolved\_host != NULL \&\& resolved\_serv != NULL) \{\\
+\qquad destination.sin\_family = resolved\_name->h\_addrtype;\\
+\qquad destination.sin\_port = htons(resolved\_serv->s\_port);\\
+\qquad memcpy(\&destination.sin\_addr, resolved\_host->h\_addr\_list[0],\\
+\qquad\qquad resolved\_host->h\_length);\\
+\qquad resolved\_proto = getprotobyname(resolved\_serv->s\_proto)\\
+\qquad if (resolved\_proto != NULL) \{\\
+\qquad\qquad int fd = socket(AF\_INET, SOCK\_STREAM, resolved\_proto->p\_proto);\\
+\qquad\qquad connect(fd, \&destination, sizeof(destination));\\
+\qquad\qquad /* Check for errors, connect, etc... */\\
+\qquad \}\\
+\}
+}
+\end{framed}
+\par
+\begin{framed}
+{\tt\small
+struct addrinfo ai\_req, *ai\_ans, *cur\_ans;\\
+static char     *dest\_host="some.ip.host", *dest\_serv="ipservice";\\
+ai\_req.ai\_flags = 0;\\
+ai\_req.ai\_family = PF\_UNSPEC;\\
+ai\_req.ai\_socktype = SOCK\_STREAM;\\
+ai\_req.ai\_protocol = 0; /* Any protocol is OK */\\
+if (getaddrinfo(dest\_host, dest\_serv, \&ai\_req, \&ai\_ans) != 0) \{\\
+\qquad for (cur\_ans = ai\_ans; cur\_ans != NULL; cur\_ans = cur\_ans->ai\_next) \{\\
+\qquad\qquad int fd = socket(cur\_ans->ai\_family, cur\_ans->ai\_socktype,\\
+\qquad\qquad\qquad cur\_ans->ai\_protocol);\\
+\qquad\qquad connect(fd\_socket,cur\_ans->ai\_addr,cur\_ans->ai\_addrlen);\\
+\qquad\qquad /* Check for errors - This loop has the ability to change the */\\
+\qquad\qquad /* order of the getaddrinfo results! */\\
+\qquad \}\\
+\}
+}
+\end{framed}
+\caption{C code snippets showing how the basic IP service resolution and connection 
+ changes from legacy IPv4-only to a dual-stack or IPv6-only environment. This represents
+ the zeroth-order porting effort for much IPv4-only code. The newer structure
+ is more terse, but the changes are extensive enough, both syntactically and
+ semantically, to probably trigger the refactoring of much larger sections of code.}
+\label{fig:pseudocode}
+\end{figure}
+When applications developed in the golden
+era of IPv4-only Internet face the transition to IPv6, the brunt of the
+work often falls on the shoulders of developers who belong to a different
+generation from the original authors. Figure \ref{fig:pseudocode} tries to
+visualise the extent of the changes that the core code of any
+IP-capable application undergoes in the transition. In addition to
+the extensively different syntax, there is a
+fundamental $1\rightarrow N$ change here:
+no IP endpoint can be satisfied with handling just {\it one}
+IP address (as any public IPv6 endpoint communicates via the
+public and on the link-local address at least), but loops and address
+ordering start appearing everywhere. We identify the following implications of this
+fundamental fact on developers' practice, in roughly descending order
+of importance:
+\begin{enumerate}
+\item {\bf Plan for extensive testing.}\\
+      The {\it syntactic} change of the core IP networking code in the
+      IPv4$\rightarrow$IPv6 transition is large enough to oftentime
+      justify the refactoring of larger portions of code. The 
+      {\it semantic} $1\rightarrow N$ change may be {\it forcing}
+      some rethinking at the design level. A possible temptation here
+      is to provide parallel sections of code that handle the IPv6 case
+      only: a few other reasons why this may not be a good idea are
+      listed below. In any case, there is an implicit expectation that 
+      a change that should be affecting the {\it transport} layer of
+      the network only should cause no ripple in the upper layers, i.e.
+      that the perceived responsiveness, performance and reliability
+      of the code remain unchanged. {\it Extensive} stress-testing should
+      therefore be planned on IPv6-ported code. 
+\item {\bf Respect the sysadmin protocol preferences.}\\
+      Code that binds and connects IP sockets is suddenly faced with 
+      making choices that used to be delegated to the operating system or
+      networking-capable libraries. Lists of addresses may be received in
+      a given order, but it's now the responsibility of the socket-handling
+      code to iterate and re-iterate on the list, handle exceptions and
+      possibly operate in parallel on various entries
+      to implement some form of `happy-eyeballs'\footnote{See RFC6555 \cite{rfc}.}
+      algorithm. As the ordering of both source and destination addresses
+      established at the system level by the system
+      administrator\footnote{Via {\tt /etc/gai.conf}, {\tt ip addrlabel} or their equivalent.}
+      may have security implications, developers should go the extra mile to 
+      keep that ordering even if they have to reshuffle the list for any reason.
+      Applications should allow users to prefer/enable either IPv4 or IPv6 via
+      configuration, but should always honor the system-level administrator's choice 
+      by default.
+\item {\bf Port all existing security measures.}\\
+      Fresh new code that hasn't been tested broadly and in the 
+      wild is {\it per se} attractive to anyone looking for
+      malicious exploits. Especially in the case where IPv6-specific
+      code or processes are developed for {\it parallel} deployment with
+      well-proven IPv4 code, one should make sure that any security measure,
+      filter or wisdom that was included in the code for the IPv4 case isn't
+      simply forgotten for IPv6. While it may not be immediately apparent,
+      {\it all} constructs that are meaningful for IPv4 have their
+      translation or counterpart for IPv6.
+\end{enumerate}

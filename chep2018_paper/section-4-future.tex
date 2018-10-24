@@ -1,0 +1,98 @@
+%section 4
+\subsection{Obstacles and potential show-stoppers}
+Our experience with the transition of WLCG Tier-1 and Tier-2 centers so far 
+has identified various cases where the IPv4$\rightarrow$IPv6 transition has
+consequences that exceed the simple replacement of the IP {\it transport} layer.
+These broadly fall in the following categories:
+\begin{enumerate}
+\item Software components and protocol with fixed-size storage for network
+addresses, for example in (Grid-)FTP and AFS. This can be overcome by appropriate
+protocol extensions (e.g. the introduction of 'extended' FTP commands
+{\tt EPRT}, {\tt EPSV}, etc.), with a large development effort required.
+In certain cases (AFS) this effort was determined to be too large and not
+worthwhile, while the GrifFTP 'v2' extensions were issued with no IPv6 support.
+\item Software components and protocols that assume single addresses or a single
+IP protocol for 
+network endpoints (to various extents, all the components in the WLCG software
+matrix). While all Operating Systems do provide hybrid network stacks and prioritized/configurable
+source and destination address selection\footnote{Address selection is regulated in most cases by RFC6724.}, applications should always iterate over multiple
+possible results (belonging to multiple IP protocol versions) and provide configurable
+overrides and preferences. 
+\item Software components and network infrastructures providing asymmetric
+handling, or separate code stacks, for IPv4 and IPv6 traffic: these also
+have the ability to load the network transport choice with measurable
+performance consequences.
+\end{enumerate}
+Detecting and explaining these IPv4/IPv6 asymmetries and fostering improved
+symmetry across the WLCG software matrix has been a long-standing activity
+for our group. As there is inherent risk in changing, testing and rolling
+out (sometimes sizable) software changes when no functional
+issue requires immediate attention, these changes are often not shortlisted
+for deployment by software development teams. We need to continue tracking
+these issues down to the
+level where no deployment of measurable performance asymmetry between the two
+protocols is seen: this can be seen as the backdrop of any future activity.
+
+\subsection{Further steps}
+Once the data transfer monitoring infrastructure described in Section
+\ref{sec-monitoring} is completed and covers all services, two cases
+need to be consistently monitored and, where needed, investigated
+and resolved:
+\begin{enumerate}
+\item cases where the fraction of data transferred over IPv6 is lower than expected:
+the preference for IPv6 over IPv4 has to established throughout the system;
+\item cases where the transfer performance is either significantly worse 
+or significantly better on IPv6 over IPv4: asymmetries in the routing and
+transport should be identified, especially in the LHCONE and LHCOPN networks.
+\end{enumerate}
+\par
+Over a stable and understood data transfer network 
+IPv6-only worker nodes should encounter no more operational anomalies
+than other types of worker nodes. The 
+job failure rate on IPV6-only, dual-stack and IPv4-only worker nodes should
+be monitored statistically and deviations properly troubleshot.
+\par
+Once the use-case of IPv6-only worker nodes operates smoothly, the next
+step in the transition roadmap is moving services and network segments to
+IPv6-only operation.
+
+\subsection{IPv6-only scenarios}
+The final step of the IPv4$\rightarrow$IPv6 transition is the phasing out of
+IPv4. While still in the non-near future, this is also arguably the only step
+that can bring along a desirable reduction
+in the infrastructure maintenance effort, so it shouldn't be delayed
+without reason. Many of the issues described in the previous sections 
+actually arise
+from the fact that in the current transition phase many components and
+configurations have to be maintained in parallel.
+\par
+In order to demonstrate that the close of the transition is a realistic
+objective, IPv6-only operation of an entire WLCG Tier-X site will
+need to have been proven by all experiments and sites run by most WLCG
+partners, with residual IPv4-only services either deprecated or made
+accessible via protocol translation techniques (e.g. DNS64/NAT64, see
+NAT64/DNS64 (RFC6146/6147 \cite{rfc})). 
+\par
+{\it XXX Should we mention the few experiments performed so far here ?}
+
+\subsection{Conclusion}
+The target case of allowing successful execution of generic WLCG job payloads
+on IPv6-only worker nodes has been driving the IPv4-IPv6 dual-stack deployment
+of storage services across the WLCG production infrastructure. According to
+the current progress tracking, summarised in Sections \ref{ssec-t1trans} and
+\ref{ssec-t2trans} above, this step should be completed at CERN, Tier-1
+and Tier-2 centers by the end of LHC Run-II (end of 2018). A few residual
+issues were identified in the software stack in this process.
+\par
+Data from
+a complete and pervasive monitoring infrastructure are crucial in building
+confidence in the new transport layer, which is expected to provide the
+{\it same} level of performance and reliability as the one it replaces: these
+come from various sources (see Section \ref{sec-monitoring}), with a few
+remaining blind spots being covered.
+\par
+Feedback from the actual operation of  
+IPv6-only computing farms will then determine the time-scale and viability of
+driving the transition process to its natural ending, when the burden
+of operating a duplicated transport infrastructure will be eventually lifted.
+

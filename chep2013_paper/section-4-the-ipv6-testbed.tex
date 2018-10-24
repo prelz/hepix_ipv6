@@ -1,0 +1,79 @@
+The impact of IPv6 is not limited to the transport layer 
+but introduces the need for choice and preference in name-to-address 
+resolution, implies multi-homing of all network endpoints (possibly on 
+multiple protocol versions) and requires opaque handling of address 
+information. This broadens the scope of code changes needed to add
+IPv6 support to existing code and adds to the complexity of testing:
+continued operation on IPv4 on dual-stack hosts, then preference of IPv6 and 
+options to control it for all network bindings and connections
+need to be verified with adequate code coverage.
+\par
+At opposite ends of the spectrum of practical testing options are
+testing of individual, isolated components and services and the analysis of 
+integrated services on dual-stack nodes. Both approaches are incomplete:
+\begin{itemize}
+\item[-] testing of isolated components misses the interaction with other
+services at the OS level and usually requires services to be configured
+differently than for production;
+\item[-] testing of production-ready, integrated nodes may just be 
+accidentally focusing on normal operation and bring insufficient 
+code and functionality coverage.
+\end{itemize}
+This calls for a complementary approach,
+where individual services are deployed and tested within the scale of
+available dedicated resources and, once sufficient confidence and knowledge
+of their level and mode of IPv6 support is built, are watched in the context
+of a production node with dual-stack network and dual IPv4/IPv6 public address
+resolution.
+\par
+Desirable characteristics of a dedicated testbed for single-service testing are:
+\begin{itemize}
+\item Geographical spread covering all ranges of realistic network latencies
+and as many network providers as possible.
+\item Uniform authentication/authorization scheme to factor out AA issues.
+\item Uniform OS installation, to factor out any issue with the custom 
+configuration needed to test isolated services and for easier
+deployment of new services.
+\end{itemize}
+The current list of active testbed nodes can be found at the following URL:\\
+{\tt http://hepix-ipv6.web.cern.ch/testbed-nodes}\\
+While we have at the time of writing a reasonable
+9-site/6-National Research and Education Network (NREN) coverage of Europe, the only non-european sites in the testbed
+are IHEP Beijing in China and Fermilab in the US. More testbed sites are both needed and welcome to join 
+to achieve a better match of our stated testbed goals.
+\par
+As for OS distributions, testbed nodes are mostly installed with 
+Scientific Linux (CERN) version 5,
+to replicate production conditions at LCG Tier-X centres. A few testbed nodes
+have Red Hat Enterprise Linux (RHEL) \cite{rhel} version 6 derivatives installed: this allowed us to discover 
+(and document in our knowledge base, {\tt http://hepix-ipv6.web.cern.ch/knowledge-base})
+that, rather unexpectedly, {\tt libc} on RHEL version 6 causes unspecified 
+protocol sockets to be bound on IPv4 only, instead of dual-stack 
+as it used to be.
+\par
+To achieve the simplest possible authentication scheme, a custom Globus
+Security Infrastructure (GSI)
+plug-in maps all members of our test Virtual Organisation (VO) ({\tt ipv6.hepix.org}) to one
+local account, logging any access. 
+\par
+The first service we deployed for standalone testing through the testbed was
+GridFTP (or, more accurately, {\tt gsiftp}). 
+This was not only because of GridFTP's basic role in WLCG data
+transfer, but also because the FTP protocol (the GSI extensions don't 
+affect but also suffer from this issue) is a paradigmatic example of 
+how non-trivial IPv6 support can be. The original FTP specifications 
+(RFC 765/RFC 959 \cite{rfc}) used the quad-byte notation for IP addresses 
+{\em in the syntax of the FTP protocol commands} {\tt PORT} and {\tt PASV}.
+This required the introduction, with RFC 2428 (September 1998) \cite{rfc} of
+``extended'' versions of the same commands, supporting different address
+families, and IPv6 in particular. We found on our testbed that support for 
+the 'extended' command forms (and thus {\em implicitly} for IPv6)
+is missing from certain FTP client implementations. Retrofitting the
+clients with these commands is definitely more than a simple change in
+the transport layer and serves as an example of how ramified the
+introduction of 'IPv6 support' can be.
+\par
+Building on this mesh of GridFTP servers, both continuous direct point-to-point 
+file transfer tests and tests of the File Transfer Service 
+(FTS), were successfully carried out. Storage Resource Manager (SRM) endpoints
+were also added, as described in detail in the next section.
