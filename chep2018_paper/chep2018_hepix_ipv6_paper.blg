@@ -4,6 +4,13 @@ The top-level auxiliary file: chep2018_hepix_ipv6_paper.aux
 The style file: woc.bst
 I found no \bibdata command---while reading file chep2018_hepix_ipv6_paper.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--I didn't find a database entry for "ipv6wg"
+Warning--I didn't find a database entry for "ipv6chep2016"
+Warning--I didn't find a database entry for "alien"
+Warning--I didn't find a database entry for "jalien"
+Warning--I didn't find a database entry for "glideinwms"
+Warning--I didn't find a database entry for "htcondor"
+Warning--I didn't find a database entry for "dirac"
 Warning--I didn't find a database entry for "sam"
 Warning--I didn't find a database entry for "etf"
 Warning--I didn't find a database entry for "perfsonar"
@@ -18,7 +25,7 @@ Warning--I didn't find a database entry for "rfc"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 You've used 0 entries,
             3358 wiz_defined-function locations,
-            1147 strings with 9636 characters,
+            1154 strings with 9688 characters,
 and the built_in function-call counts, 22 in all, are:
 = -- 0
 > -- 0

@@ -1,0 +1,6 @@
+PWD /Users/dpk87/hepix_ipv6/chep2018_paper
+INPUT /usr/local/texlive/2016/texmf.cnf
+INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT bibliography.tex
+OUTPUT bibliography.log
