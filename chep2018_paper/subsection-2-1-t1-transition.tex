@@ -36,9 +36,18 @@ Analysis showed that the dCache-Doors require a dual-stack deployment instead of
 After discussion with the dCache developers, and also given problems in gridftp, KIT decided to implement a dual-stack only environment.
 %Since this was effecting only two CMS dCache-Door servers, a workaround was implemented which offered a dual-stack deployment. In theory with dual-stack dCache-Doors and dual-homed dCache-Pools IPv6 was realised, however, it failed. Under certain circumstances transfers did just not work out. The FTS at CERN was initiating transfers and communicating with KIT’s  dCache via IPv6. If those file transfers took place between IPv4 only sites, dcache had to change protocol from IPv6 to IPv4 and in other cases the actual transfer was  executed by gridftp, yet the transfer failed. Confronted with all these issues, at DE-KIT the decision was made to redesign the deployment to a dual-stack only environment.  Communication and discussions with dcache developers followed. They pointed to one issue at the protocol stack of gridftp, which had not been implemented rfc conform. But later it was discovered that changing some lines of code in dcache could have solved the issue.
   
-Early in 2018, EOS at CERN was upgraded to a version that supported IPv6.  
+Early in 2018, EOS \cite{eos} at CERN was upgraded to a version that supported IPv6.  
 As soon as the EOS instances for LHCb and ALICE got a AAAA DNS records for their public nodes, an large increase of IPv6 traffic was noticed on the CERN central firewall, moving from few hundreds of Mbps to almost 10Gbps. 
-Figure \ref{tier0-traffic.png} shows the traffic increase when the EOS dual-stack version was introduced.
+Figure \ref{fig:tier0-traffic} shows the traffic increase when the EOS dual-stack version was introduced.
+ 
+ \begin{figure}[h!]
+%\centering
+%\includegraphics[width=5.6 in]{tier0-ipv6-firewall-traffic.png}
+%\includegraphics[width=9cm]{tier0-ipv6-firewall-traffic.png}
+\includegraphics[width=13cm]{tier0-ipv6-firewall-traffic.png}
+\caption{IPv6 traffic through the CERN central firewall, period Oct 2017 to Sep 2018}
+\label{fig:tier0-traffic}
+\end{figure}
  
 This increased traffic began to saturate CERN's IPv6 firewall, so in June 2018 a
 %increase posed some worries, because the IPv6 firewall path was limited to 10Gbps and was actually saturating now and then. So in June 2018 it was implemented the HTAR (High Throughput Alternative Route) 
@@ -64,10 +73,4 @@ FNAL will enable their IPv6 dual-stack setup at the beginning of 2019; the Russi
 %\label{fig:LHC[OPN/ONE] Tier-1 readyness status}
 %\end{figure}
 
-\begin{figure}[h!]
-\centering
-%\includegraphics[width=5.6 in]{tier0-ipv6-firewall-traffic.png}
-\includegraphics[width=13cm]{tier0-ipv6-firewall-traffic.png}
-\caption{IPv6 traffic through the CERN central firewall, period Sept 2018-Sept 2019}
-\label{fig:tier0-traffic}
-\end{figure}
+

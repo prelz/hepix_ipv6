@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1543176844 "chep2018_hepix_ipv6_paper.tex" "chep2018_hepix_ipv6_paper.pdf" "chep2018_hepix_ipv6_paper" 1543176846
+["pdflatex"] 1543347614 "chep2018_hepix_ipv6_paper.tex" "chep2018_hepix_ipv6_paper.pdf" "chep2018_hepix_ipv6_paper" 1543347616
   "/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -110,19 +110,19 @@
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1485820625 3873397 99b27042f8906a88a1444673de0d832a ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
   "FTS-IPv6-figure.png" 1542100004 217049 041cf4a0176047d990925ddb4c587ced ""
-  "bibliography.tex" 1542989474 5118 ca17cc657caaeabb05f9bd1107afd67f ""
+  "bibliography.tex" 1543346960 5023 cd07b395a73e362a4002328dad58111d ""
   "chart.png" 1540475323 13983 fa8003d067ff49201db5899bf99806e4 ""
   "chart2.png" 1540475323 15353 15532ffb7b7c7a343bbae97a27502ab2 ""
   "chart3.png" 1540475323 18637 fcc0aa53adcb8363a2efec1c5661900f ""
-  "chep2018_hepix_ipv6_paper.aux" 1543176846 3660 f3c7fe7147f4e771d3a270988787136d ""
+  "chep2018_hepix_ipv6_paper.aux" 1543347616 3503 612536d6c8617cad3d7e8d58f56196df ""
   "chep2018_hepix_ipv6_paper.tex" 1542100004 6429 818631e586e79c57bd86963972f72454 ""
   "section-1-introduction.tex" 1542989055 1083 301448e9226d91a1e9fc97ea3d574bb4 ""
   "section-2-transition.tex" 1542100004 413 0588753f9ec07cbc608f2a898cdd04aa ""
   "section-3-monitoring.tex" 1542989055 8553 3fc8d5f21119c257545750b1f28d88cd ""
-  "section-4-future.tex" 1542989055 5506 87580d7eb64233bf8a8501791aa5acb6 ""
-  "subsection-2-1-t1-transition.tex" 1542989055 7086 eacedd7473e2c6ab86dca4feff811546 ""
-  "subsection-2-2-t2-transition.tex" 1542989055 2716 1e8df6dcd2d5c4261b50426903271305 ""
-  "subsection-2-3-exp-services.tex" 1543061436 2176 cded4ec47b2acd57e10c16406e6d6b53 ""
+  "section-4-future.tex" 1543347124 5507 6381949a15a78acc092b00941e59a212 ""
+  "subsection-2-1-t1-transition.tex" 1543347001 7165 802c68171d1f33092d049b0490fad016 ""
+  "subsection-2-2-t2-transition.tex" 1543347610 2716 3ad3414e8c25c9fb341b9a0198600d81 ""
+  "subsection-2-3-exp-services.tex" 1543345769 2176 2945b9e5808202609756563656bd9d7a ""
   "tier0-ipv6-firewall-traffic.png" 1538480488 24768 a0c57774b2539cee7d859c8204e5d47c ""
   "webofc.cls" 1538480488 22879 9b3600ccc9e1f46483be5528df28a925 ""
   (generated)
