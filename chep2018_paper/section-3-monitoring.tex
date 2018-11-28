@@ -35,7 +35,9 @@ In addition to the configuration changes, there has been also good progress in t
 \subsection{FTS}
 %In the WLCG bulk data transport is carried out predominantly by the File Transfer Service (FTS3)  \cite{638647551}. The monitoring data reported by each FTS3 server for such data transfers indicate whether IPv6 was used during the transfer. Figure~\ref{fig:fts} (top) shows FTS data transfers \cite{grafana-FTS} for all VOs (not just the WLCG experiments) over 30 days in September-October 2018. It can be seen that whilst IPv4 still dominates IPv6 is used approximately a quarter of the time. Interestingly, transfers over IPv6 appear to be more reliable (figure~\ref{fig:fts} bottom), hovering around the 95\% mark whilst transfers over IPv4 average approximately 75\% success rate. It is speculated that this is because the sites which have implemented IPv6 first tend to be the more reliable ones. In order for FTS transfers to go over IPv6 both of the storage elements and the FTS server itself need to be dual-stack. Currently, of the eight FTS servers in regular use by the WLCG, five are dual-stack. It is planned that at least one of the remaining three will enable IPv6 at the end of LHC Run 2.
 
-In WLCG bulk data transport is carried out predominantly by the File Transfer Service (FTS3)  \cite{638647551}. The monitoring data reported by each FTS3 server for such data transfers indicate whether IPv6 was used during the transfer. Figure~\ref{fig:fts} shows FTS data transfers \cite{grafana-FTS} for all VOs (not just the WLCG experiments) during the month of October 2018. It can be seen that whilst IPv4 still dominates IPv6 is used approximately a quarter of the time. Interestingly, transfers over IPv6 appear to be more reliable, hovering around the 90\% mark whilst transfers over IPv4 average approximately 75\% success rate. The reasons for this are not yet understood.
+In WLCG bulk data transport is carried out predominantly by the File Transfer Service (FTS3)  \cite{638647551}. The monitoring data reported by each FTS3 server for such data transfers indicate whether IPv6 was used during the transfer. Figure~\ref{fig:fts} shows FTS data transfers 
+%\cite{grafana-FTS}  
+for all VOs (not just the WLCG experiments) during the month of October 2018. It can be seen that whilst IPv4 still dominates IPv6 is used approximately a quarter of the time. Interestingly, transfers over IPv6 appear to be more reliable, hovering around the 90\% mark whilst transfers over IPv4 average approximately 75\% success rate. The reasons for this are not yet understood.
 % It is speculated that this is because the sites which have implemented IPv6 first tend to be the more reliable ones. 
 In order for FTS transfers to go over IPv6 both of the storage elements and the FTS server itself need to be dual-stack. Currently, of the eight FTS servers in regular use by the WLCG, five are dual-stack. It is planned that at least one of the remaining three will enable IPv6 at the end of LHC Run 2.
 
@@ -49,6 +51,8 @@ In order for FTS transfers to go over IPv6 both of the storage elements and the 
 \end{figure}
 
 \subsection{XrootD}
-The other major method by which data is accessed, often remotely, is XrootD most notably by the ALICE and CMS experiments. Currently, the Monit WLCG Transfers Monitoring Service at CERN \cite{grafana-WLCG-Transfers} does not display whether this data was transferred over IPv4 or IPv6. However, the XrootD monitoring data has now been updated to report whether IPv4 or IPv6 was used \cite{xrootd-ipv6} and work is in progress to include this information in the Monit monitoring.
+The other major method by which data is accessed, often remotely, is XrootD most notably by the ALICE and CMS experiments. Currently, the Monit WLCG Transfers Monitoring Service at CERN %\cite{grafana-WLCG-Transfers} 
+does not display whether this data was transferred over IPv4 or IPv6. However, the XrootD monitoring data has now been updated to report whether IPv4 or IPv6 was used %\cite{xrootd-ipv6}  
+and work is in progress to include this information in the Monit monitoring.
 
 
