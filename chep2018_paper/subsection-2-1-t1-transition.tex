@@ -37,7 +37,7 @@ After discussion with the dCache developers, and also given problems in gridftp,
 %Since this was effecting only two CMS dCache-Door servers, a workaround was implemented which offered a dual-stack deployment. In theory with dual-stack dCache-Doors and dual-homed dCache-Pools IPv6 was realised, however, it failed. Under certain circumstances transfers did just not work out. The FTS at CERN was initiating transfers and communicating with KIT’s  dCache via IPv6. If those file transfers took place between IPv4 only sites, dcache had to change protocol from IPv6 to IPv4 and in other cases the actual transfer was  executed by gridftp, yet the transfer failed. Confronted with all these issues, at DE-KIT the decision was made to redesign the deployment to a dual-stack only environment.  Communication and discussions with dcache developers followed. They pointed to one issue at the protocol stack of gridftp, which had not been implemented rfc conform. But later it was discovered that changing some lines of code in dcache could have solved the issue.
   
 Early in 2018, EOS \cite{eos} at CERN was upgraded to a version that supported IPv6.  
-As soon as the EOS instances for LHCb and ALICE got a AAAA DNS records for their public nodes, an large increase of IPv6 traffic was noticed on the CERN central firewall, moving from few hundreds of Mbps to almost 10Gbps. 
+As soon as the EOS instances for LHCb and ALICE were configured with AAAA DNS records for their public nodes, a large increase of IPv6 traffic was noticed on the CERN central firewall, moving from few hundreds of Mbps to almost 10Gbps. 
 Figure \ref{fig:tier0-traffic} shows the traffic increase when the EOS dual-stack version was introduced.
  
  \begin{figure}[h!]
