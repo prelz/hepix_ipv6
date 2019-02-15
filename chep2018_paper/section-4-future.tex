@@ -56,34 +56,44 @@ Once the use-case of IPv6-only worker nodes operates smoothly, the next
 step in the transition roadmap is moving services and network segments to
 IPv6-only operation.
 
-\subsection{IPv6-only scenarios}
-The final step of the IPv4$\rightarrow$IPv6 transition is the phasing out of
-IPv4. While still in the non-near future, this is also arguably the only step
-that can bring along a desirable reduction
-in the infrastructure maintenance effort, so it shouldn't be delayed
-without reason. Many of the issues described in the previous sections 
-actually arise
-from the fact that in the current transition phase many components and
-configurations have to be maintained in parallel.
-\par
-In order to demonstrate that the close of the transition is a realistic
-objective, IPv6-only operation of an entire WLCG Tier-X site will
-need to have been proven by all experiments and sites run by most WLCG
-partners, with residual IPv4-only services either deprecated or made
-accessible via protocol translation techniques (e.g. DNS64/NAT64, see
-NAT64/DNS64 (RFC6146/6147 \cite{rfc})). 
-\par
+%\subsection{IPv6-only scenarios}
+%The final step of the IPv4$\rightarrow$IPv6 transition is the phasing out of
+%IPv4. While still in the non-near future, this is also arguably the only step
+%that can bring along a desirable reduction
+%in the infrastructure maintenance effort, so it shouldn't be delayed
+%without reason. Many of the issues described in the previous sections 
+%actually arise
+%from the fact that in the current transition phase many components and
+%configurations have to be maintained in parallel.
+%\par
+%In order to demonstrate that the close of the transition is a realistic
+%objective, IPv6-only operation of an entire WLCG Tier-X site will
+%need to have been proven by all experiments and sites run by most WLCG
+%partners, with residual IPv4-only services either deprecated or made
+%accessible via protocol translation techniques (e.g. DNS64/NAT64, see
+%NAT64/DNS64 (RFC6146/6147 \cite{rfc})). 
+%\par
 %{\it XXX Should we mention the few experiments performed so far here ?}
 
 \subsection{Conclusion}
-The aim of allowing the successful execution of generic WLCG job payloads
-on IPv6-only worker nodes has been driving the IPv4-IPv6 dual-stack deployment
-of storage services across the WLCG production infrastructure. According to
-the current progress tracking, summarised in Sections \ref{ssec-t1trans} and
-\ref{ssec-t2trans} above, this step should be completed at CERN, Tier-1
-and Tier-2 centres by the end of 2018. A few residual
-issues were identified in the software stack in this process.
+%The aim of allowing the successful execution of generic WLCG job payloads
+%on IPv6-only worker nodes has been driving the IPv4-IPv6 dual-stack deployment
+%of storage services across the WLCG production infrastructure. 
+%According to
+%the current progress tracking, summarised in Sections \ref{ssec-t1trans} and
+%\ref{ssec-t2trans} above, this step should be completed at CERN, Tier-1
+%and Tier-2 centres by the end of 2018. A few residual
+%issues were identified in the software stack in this process.
 \par
+
+The Tier-1 deployment of IPv6 did not complete by the original planned date of
+April 2018, but by December the majority of large Tier-1's should be IPv6-capable, including more than two-thirds of the total storage capacity,
+except for the two USA TIer-1's who were unable to deploy during LHC running.
+The Tier-2 migration has gone well but will not reach completion in 2018. It is expected that more than half will be completed during 2018. 
+The main reason for delay is the local networking team not being ready
+to support IPv6. Based on input from the delayed sites, we expect that the deployment of dual-stack storage will
+happen at most of the Tier-2 sites during 2019.
+
 Data from
 a complete and pervasive monitoring infrastructure are crucial in building
 confidence in the new transport layer, which is expected to provide the
