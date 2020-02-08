@@ -2,7 +2,7 @@
 % Tier 0 and Tier 1's
 %
 
-The Tier-0 CERN is IPv6 and IPv4 dual-stack. The Tier-1 sites: CA-Triumf, DE-KIT, ES-PIC, FR-CCIN2P3, IT-INFN-CNAF, NDGF, NL-T1 (SARA-Matrix and NIKHEF), RRC-JINR-T1, TW-ASGC, UK-T1-RAL, US-T1-BNL, US-T1-FNAL are dual-stack deployed as shown in the following figure ~\ref{fig:t1ds}.
+The effort was mde to investigate at the WLCG software packages to enable them to run in a dual-stack environmen or even enable them to be protocol agnostic. First investigations tool place around the data tranfer software packages like FTS and SRM. Some software packages were replaced like AFS with EOS, or CASTOR with DPM. Today the storage environment is dual/stack ready and at CERN the Tier-0 is IPv6 and IPv4 dual-stack is enabled. The Tier-1 sites: CA-Triumf, DE-KIT, ES-PIC, FR-CCIN2P3, IT-INFN-CNAF, NDGF, NL-T1 (SARA-Matrix and NIKHEF), RRC-JINR-T1, TW-ASGC, UK-T1-RAL, US-T1-BNL, US-T1-FNAL are dual-stack deployed as shown in the following figure ~\ref{fig:t1ds}.
 \begin{figure}[t]
 \centering
 %\includegraphics[width=13cm]{Tier-1-IPv6-dual-stack}
@@ -12,5 +12,4 @@ The Tier-0 CERN is IPv6 and IPv4 dual-stack. The Tier-1 sites: CA-Triumf, DE-KIT
 \label{fig:t1ds}
 \end{figure}
 
-There is only one part of the russian tier-1 RRC-KI-T1 deployed with IPv4 only. The dual-stack perfsonar server is deployed at all sites except NL-T1-NIKHEF. The FTS server at FNAL is still running in IPv4 prefered mode but even this server will get deployed in dual-stack as soon as possible.   
-
+There is only one part of the russian Tier-1 RRC-KI-T1 deployed with IPv4 only. The dual-stack perfsonar server is deployed at all sites except NL-T1-NIKHEF and RRC-KI-T1. The FTS server at FNAL is still running in IPv4 prefered mode but even this last server will get deployed in dual-stack as soon as possible.   
