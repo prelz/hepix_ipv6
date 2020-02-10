@@ -4,34 +4,37 @@
 % sub-section c) Testing of IPv6-only (Raul Lopes - Brunel)
 % sub-section d) Future plans (Francesco)
 
-A few years ago, RFC 6586 (\cite{rfc}) concluded its survey on IPv6-only
-networking for ``real-world'', mainstream applications (gaming, telephony,
-multimedia, etc.) mentioning that {\it \guillemotleft it is possible to employ IPv6-only
-networking\guillemotright} and {\it \guillemotleft for large classes of applications
+A few years ago, RFC 6586 (\cite{rfc}) reported on a survey on IPv6-only
+networking for mainstream applications (gaming, telephony,
+multimedia, etc.) and observed that {\it \guillemotleft it is possible to employ IPv6-only
+networking\guillemotright} and that {\it \guillemotleft for large classes of applications
 there are no downsides or the downsides are negligible\guillemotright}.
-This, along with the reasonable control over the HEP software stack that
-could bring our group this far into the transition, encouraged us to test the 
-scenario where the transient complication of running and managing
+This, along with the good working relations we established over
+the past years with the HEP software stack developers,
+encouraged us to test 
+scenarios where the transient complication of running and managing
 two independent network stacks is eventually over and we are `back' to just
 running IPv6.
 
 \subsection{Aims of moving to IPv6-only and issues to be tackled}
-
+\label{ssec:ipv6onlymove}
 A dual-stack IPv6/IPv4 setup includes many components and services that need
 to be deployed twice {\it and kept in sync}: firewall rules and access
 lists, address assignment services, routing rules, network monitoring,
 diagnostics and
 intrusion detection infrastructures - just to name a few.
-Removing this duplication is desirable for maintainability and cost-saving,
-but it {\it requires} a technical
+Removing this duplication is highly desirable both for better maintainability
+and cost-saving.
+However, this {\it requires} a technical
 solution to access any site and service that may remain accessible via IPv4
 {\it only}.
 This trailing remainder of sites will be hopefully
 shrinking but will likely exist for a very long time (see
-e.g. \cite{ipv6trans} and references therein),
-especially after the availability of large blocks of returned public IPv4
-addresses will lower their market price and offset any economic drive
-connected to the IPv4 address shortage.\par
+e.g. \cite{ipv6trans} and references therein).
+It is actually expected that after large blocks of public IPv4
+addresses start being returned to the market, their market price will
+decrease and offset any economic drive connected to the IPv4 address shortage,
+{\it relieving} the pressure for migration.\par
 
 The standard solution for accessing IPV4-only services from an IPv6-only
 network is the deployment of DNS64 (RFC6147) and stateful
@@ -40,12 +43,12 @@ an IPv4 address only ('{\tt A}' records) to a synthesized IPv6 address composed
 of a default prefix\footnote{Usually {\tt 64:ff9b::}.} plus the four bytes of
 the IPv4 address. Traffic towards the DNS64 prefix is then routed to
 a NAT64 service attached to the public IPv4 network. This will in turn map the
-source ports, translate the IP packets to IPv4 and convert the return packets
+source ports, translate the IP packets to IPv4 and convert any return traffic
 back to IPv6. While NAT64 and DNS64 services start being incorporated by
 several technology developers (especially in the 'carrier-grade' NAT 
 appliance market),
 just a few open-source reference implementations exist for UNIX, with
-JOOL\footnote{\tt https://www.jool.mx} apparently being the only one still
+JOOL\footnote{\tt https://www.jool.mx} apparently being the only one 
 under active development.\par
 
 While IPv6-only environments can present a few operational challenges that
@@ -54,13 +57,13 @@ firewall appliances and network monitoring and diagnostic tools were found
 to be defective or immature, see RFC 6586 \cite{rfc} for details.},
 one-step (6$\rightarrow$4) address translation techniques do and will fail whenever 
 IPv4 literal addresses are explicitely handled, stored or signaled by
-network applications or protocols. We feel that it's time to
-locate such applications and protocols and direct an early effort
+network applications or protocols. We feel that the time is ripe to
+start identifying this class of applications and protocols and direct an early effort
 at cleaning them of {\it any} usage or reference to IPv4 literals. While 
 two-step (4$\rightarrow$6$\rightarrow$4) address translation techniques
 such as XLAT464\footnote{See RFC 6877 \cite{rfc}. XLAT464 keeps a private
 IPv4 address assigned to devices connected to IPv6-only networks and
-performa an additional address translation at the device level.}
+performs an additional address translation at the device level.}
 are currently being added to 
 network stacks especially at the request of telephony carriers that operate
 IPv6-only networks, we see this extra indirection as an (inefficient)
@@ -78,3 +81,26 @@ later (\S \ref{ssec:ipv6onlytest}).
 \input subsection-3c-ipv6only-testing.tex
 
 \subsection{Future plans}
+Insufficiently tested or immature code and the requirement that IPv6-based
+tools and infrastructures perform at least equally well as their IPv4
+counterparts have been the opposite, conflicting poles of every IPv6
+deployment effort so far. This continues to be true in the process
+of completing the transition. We therefore keep considering
+testing activities (and the consequent early detection of further application
+development needs), as a value that our group can provide. So we plan
+to increase the number of sites and stakeholders involved in testing IPv6-only 
+scenarios. The aim is to stress-test existing networking software components
+that implement any needed transition protocol (especially NAT64 and DNS64, as 
+their implementations under current maintenance are rare) and detect
+residual uses of IPv4 literals or IPv4-specific APIs in both applications and
+network protocols as early as possible.\par
+Any use of IPv4 that cannot respond properly to a NAT64-mediated
+transaction
+\footnote{More complex and inefficient address
+translation solutions such as the deployment of 'customer'-side address
+translation for RFC 6877 (\cite{rfc}) 424XLAT should be
+seen as options of last resort, see \S \ref{ssec:ipv6onlymove} above.}
+should be seen as an issue to be reported, tracked and eventually
+addressed by developers: we plan to deal with these just as we did
+with the lack of IPv6 support or the incorrect address selection
+strategies we were able to identify so far.
