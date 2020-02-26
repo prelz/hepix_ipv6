@@ -1,3 +1,28 @@
 % Subsection '3c'
-% Testing of IPv6-only (Raul Lopes - Brunel)
+% Testing of IPv6-only (on behalf of Raul Lopes - Brunel)
 %
+An IPv6-only WLCG production cluster, composed of an ARC-CE head node,
+two worker nodes and three (SQUID-based) web cache nodes based has been
+in operation at Brunel University since March 2018. Given the value
+we place on early detection of IPv4-only code sections (especially
+non-address-translatable constructs such as the use of IPv4 literals in
+data structures and signaling - see above, \S\ref{ssec:ipv6onlymove}),
+no transition techniques (e.g. NAT64/DNS64) were used for this
+infrastructure.
+\par
+WLCG production jobs for three (out of four) major LHC experiments were routed
+to this IPv6-only cluster, with LHCB jobs running successfully in
+2018, CMS jobs (submitted via a dedicated queue) running successfully in 2019,
+and ATLAS jobs, also handled by a special IPv6-only queue, requiring an
+in-depth, and still partly on-going, investigation of issues mainly within the
+Frontier\footnote{\tt http://frontier.cern.ch/} distributed database
+service.
+\par
+This reality check does confirm that IPv4 is still {\it required} in part
+of the WLCG software base, with services failing in case IPv4 connectivity
+cannot be established. While the development time that has been spent in 
+early troubleshooting and linting of these cases will definitely be rewarded
+as the transition progresses, we plan to complement this study with 
+an assessment on how many of the residual issues aren't or cannot be covered
+by available address-translation techniques.
+
