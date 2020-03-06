@@ -1,4 +1,25 @@
 %section 1
 
-The HEPiX IPv6 Working Group \cite{ipv6wg} has been investigating the many issues ...
+
+ 
+
+
+The HEPiX IPv6 Working Group \cite{ipv6wg} has been investigating the many issues related to the 
+move of WLCG services to dual-stack IPv6/IPv4 networking, thus enabling the use of
+IPv6-only CPU resources as agreed by the WLCG Management Board and presented by us at 
+CHEP2018 [Ref]. 
+
+The dual-stack deployment does however result in a networking environment
+which is much more complex than when using just IPv6. Some services, e.g.
+the EOS storage system at CERN, are using IPv6-only for internal communication,
+where possible. Several Broadband/Mobile-phone companies, such as T-Mobile in the USA and
+BT/EE in the UK, now use IPv6-only networking with connectivity to the IPv4
+legacy world enabled by the use of NAT64/DNS64/464XLAT. Large companies, such
+as Facebook, use IPv6-only networking within their internal networks, there
+being good management and performance reasons for this. Based on these examples
+of IPv6-only networking, we have therefore been  investigating the future removal of the IPv4 protocol in
+more places within the WLCG infrastructure.
+
+This paper presents the status of the WLCG transition to dual-stack services, together with 
+our work and plans for moving to an IPv6-only networking environment for WLCG.
 

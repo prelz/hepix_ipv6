@@ -1,1 +1,31 @@
 % section 4 Conclusions (Dave)
+%\subsection{Future plans}
+
+We have presented the status of the WLCG transition to the use of dual-stack IPv6/IPv4 services. The Tier-1 transition is very nearly complete and 
+more than 70\% of the Tier-2 storage is now available over IPv6. The transition will only be fully completed once we remove the complexity of
+dual-stack networking and the WLCG core infrastructure is based entirely on IPv6-only networking.
+
+
+Insufficiently tested or immature code and the requirement that IPv6-based
+tools and infrastructures perform at least equally well as their IPv4
+counterparts have been the opposite, conflicting poles of every IPv6
+deployment effort so far. This continues to be true in the process
+of completing the transition. We therefore keep considering
+testing activities (and the consequent early detection of further application
+development needs), as a value that our group can provide. So we plan
+to increase the number of sites and stakeholders involved in testing IPv6-only 
+scenarios. The aim is to stress-test existing networking software components
+that implement any needed transition protocol (especially NAT64 and DNS64, as 
+their implementations under current maintenance are rare) and detect
+residual uses of IPv4 literals or IPv4-specific APIs in both applications and
+network protocols as early as possible.\par
+Any use of IPv4 that cannot respond properly to a NAT64-mediated
+transaction
+\footnote{More complex and inefficient address
+translation solutions such as the deployment of 'customer'-side address
+translation for RFC 6877 (\cite{rfc}) 424XLAT should be
+seen as options of last resort, see \S \ref{ssec:ipv6onlymove} above.}
+should be seen as an issue to be reported, tracked and eventually
+addressed by developers: we plan to deal with these just as we did
+with the lack of IPv6 support or the incorrect address selection
+strategies we were able to identify so far.

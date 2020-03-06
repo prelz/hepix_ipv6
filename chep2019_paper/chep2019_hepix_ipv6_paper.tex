@@ -5,6 +5,7 @@
 %
 \usepackage{hyperref}
 \hypersetup{colorlinks=false}
+
 %
 \begin{document}
 %
@@ -24,14 +25,15 @@
   \firstname{Terry} \lastname{Froy}\inst{6}\and
   \firstname{Costin} \lastname{Grigoras}\inst{1}\and
   \firstname{Kashif} \lastname{Hafeez}\inst{2}\and
-  \firstname{Bruno Heinrich} \lastname{Hoeft}\inst{7}\and
+  \firstname{Bruno} \lastname{Hoeft}\inst{7}\and
   \firstname{David P.} \lastname{Kelsey}\inst{2}\thanks{\email{david.kelsey@stfc.ac.uk}} \and
-  \firstname{Fernando} \lastname{L\'opez~Mu\~noz}\inst{8,9}\fnsep\and
+  \firstname{Raul} \lastname{Lopes} \inst{8} \and
+  \firstname{Fernando} \lastname{L\'opez~Mu\~noz}\inst{9,10}\fnsep\and
   \firstname{Edoardo} \lastname{Martelli}\inst{1}\and
   \firstname{Raja} \lastname{Nandakumar}\inst{2}\and
   \firstname{Kars} \lastname{Ohrenberg}\inst{5}\and
-  \firstname{Francesco} \lastname{Prelz}\inst{10}\and
-  \firstname{Duncan} \lastname{Rand}\inst{11}\and
+  \firstname{Francesco} \lastname{Prelz}\inst{11}\and
+  \firstname{Duncan} \lastname{Rand}\inst{12}\and
   \firstname{Andrea} \lastname{Sciab\`a}\inst{1}
 }
 
@@ -50,6 +52,8 @@
 \and
   Karlsruher Institut f\"ur Technologie, Hermann-von-Helmholtz-Platz 1, D-76344 Eggenstein-Leopoldshafen, Germany 
 \and
+ College of Engineering, Design and Physical Sciences, Brunel University London, Uxbridge, UB8 3PH, United Kingdom 
+\and
   Port d'Informaci\'o Cient\'ifica, Campus UAB, Edifici D, E-08193 Bellaterra, Spain
 \and
   Centro de Investigaciones Energ\'eticas, Medioambientales y Tecnol\'ogicas (CIEMAT), Madrid, Spain
@@ -59,33 +63,25 @@
   Imperial College London, South Kensington Campus, London SW7 2AZ, United Kingdom
           }
 
-\abstract{%
+\abstract{
 
 
 The use of IPv6 on the general internet continues to grow.
-Several Broadband/Mobile-phone companies, such as T-Mobile in the USA and
-BT/EE in the UK, now use IPv6-only networking with connectivity to the IPv4
-legacy world enabled by the use of NAT64/DNS64/464XLAT. Large companies, such
-as Facebook, use IPv6-only networking within their internal networks, there
-being good management and performance reasons for this. The transition of
+The transition of
 WLCG central and storage services to dual-stack IPv4/IPv6 is progressing well,
 thus enabling the use of IPv6-only CPU resources as agreed by the WLCG
 Management Board and presented by us at earlier CHEP conferences.
 
-During the last year, the HEPiX IPv6 working group has not only been chasing
-and supporting the transition to dual-stack services, but has also been
-encouraging network monitoring providers to allow for filtering of plots by
-the IP protocol used. We have investigated and fixed the reasons for the use
+During the last year, the HEPiX IPv6 working group has been chasing
+and supporting the transition to dual-stack services.
+We have also investigated and fixed the reasons for the use
 of IPv4 between two dual-stack endpoints when IPv6 should be preferred.
-We present this work and the tests that have been made of IPv6-only CPU
+We present the status of the transition and some tests that have been made of IPv6-only CPU
 showing the successful use of IPv6 protocols in accessing WLCG services.
 
 The dual-stack deployment does however result in a networking environment
-which is much more complex than when using just IPv6. Some services, e.g.
-the EOS storage system at CERN, are using IPv6-only for internal communication,
-where possible. The group is investigating the removal of the IPv4 protocol in
-more places. We will present the areas where this could be useful and possible
-and suggest a timetable for being able to turn off IPv4 in this way.
+which is much more complex than when using just IPv6. The group is investigating the removal of the IPv4 protocol in
+more places. We present the areas where this could be useful together with our future plans.
 }
 %
 \maketitle
@@ -102,7 +98,7 @@ and suggest a timetable for being able to turn off IPv4 in this way.
 \label{sec-onlysix}
 \input{section-3-IPv6-only-networking.tex}
 
-\section{Conclusions}
+\section{Conclusions and future plans}
 \label{sec-concl}
 \input{section-4-conclusions.tex}
 
@@ -176,6 +172,9 @@ and suggest a timetable for being able to turn off IPv4 in this way.
 %Book Author, \textit{Book title} (Publisher, place, year) page numbers
 % etc
 %\end{thebibliography}
+
+\section {The References need updating} 
+These are from the CHEP2018 paper!
 
 \input{bibliography.tex}
 
