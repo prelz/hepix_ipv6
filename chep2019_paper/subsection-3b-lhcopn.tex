@@ -1,12 +1,20 @@
 %section{The case for an IPv6 only LHCOPN}
 
-The LHCOPN\footnote{\href{https://twiki.cern.ch/twiki/bin/view/LHCOPN/WebHome}{LHCOPN twiki: https://twiki.cern.ch/twiki/bin/view/LHCOPN/WebHome}} is the private network that connects CERN, the WLCG Tier0, to the 14 Tier1s datacentre. It is made of multiple 10Gbps and 100Gbps and provide more than 1Tbps out of the Tier0.
+The LHCOPN netwok implementented IPv6 quite early during their development. 
+Since the EOS storage service has been supporting IPv6, a large fraction of the data transfers carried by this network have changed internet  protocol, moving from IPv4 to IPv6. Since June 2019, LHCOPN carries more IPv6 packets than IPv4, as shown in figure~\ref{fig:lhcopne-traffic}
 
-Since the EOS storage service has been supporting IPv6, a large fraction of the LHCOPN data transfers have changed transmission protocol, moving from IPv4 to IPv6. Since June 2019, LHCOPN carries more IPv6 packets than IPv4\footnote{\href{https://twiki.cern.ch/twiki/bin/view/LHCOPN/LHCOPNEv4v6Traffic}{LHCOPN traffic comparison: https://twiki.cern.ch/twiki/bin/view/LHCOPN/LHCOPNEv4v6Traffic}}. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{lhcopne-traffic.png}
+\caption{(left) LHCOPN and LHCONE IPv4-IPv6 traffic distribution as seen on the CERN routers\cite{RefLHCOPNEv4v6}  }
+\label{fig:lhcopne-traffic}
+\end{figure}
 
-It could be envisaged that in the near future, once all the Tier1s will have implemented dual-stack storage services, the LHCOPN could be turned into an IPv6 only network. There are some advantages that an IPv6 only LHCOPN could bring:
+\footnote{\href{https://twiki.cern.ch/twiki/bin/view/LHCOPN/LHCOPNEv4v6Traffic}{LHCOPN traffic comparison: https://twiki.cern.ch/twiki/bin/view/LHCOPN/LHCOPNEv4v6Traffic}}. 
+
+It could be envisaged that in the near future, once all the Tier-1s will have implemented dual-stack storage services, the LHCOPN could be turned into an IPv6 only network. There are some advantages that an IPv6 only LHCOPN could bring:
 \begin{itemize}
-  \item Increased security: LHCOPN links connect directly into Tier1s data-centres, often bypassing border firewalls. Removing one protocol would decrease the attack surface;
+  \item Increased security: LHCOPN links connect directly into Tier-1s data-centres, often bypassing border firewalls. Removing one protocol would decrease the attack surface;
   \item Simpler opeations: maintining one transmission protocol would simplify the operation of the networks and the resolution of problems.
 \end{itemize}
 
