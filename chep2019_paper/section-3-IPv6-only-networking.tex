@@ -6,15 +6,15 @@
 
 A few years ago, RFC 6586 (\cite{rfc}) reported on a survey on IPv6-only
 networking for mainstream applications (gaming, telephony,
-multimedia, etc.) and observed that {\it \guillemotleft it is possible to employ IPv6-only
-networking\guillemotright} and that {\it \guillemotleft for large classes of applications
-there are no downsides or the downsides are negligible\guillemotright}.
+multimedia, etc.) and observed that {\it  ``it is possible to employ IPv6-only
+networking"} and that {\it ``for large classes of applications
+there are no downsides or the downsides are negligible"}.
 This, along with the good working relations we established over
 the past years with the HEP software stack developers,
 encouraged us to test 
 scenarios where the transient complication of running and managing
-two independent network stacks is eventually over and we are `back' to just
-running IPv6.
+two independent network stacks is eventually over and we are `back' to
+running just IPv6.
 
 \subsection{Aims of moving to IPv6-only and issues to be tackled}
 \label{ssec:ipv6onlymove}
@@ -22,7 +22,7 @@ A dual-stack IPv6/IPv4 setup includes many components and services that need
 to be deployed twice {\it and kept in sync}: firewall rules and access
 lists, address assignment services, routing rules, network monitoring,
 diagnostics and
-intrusion detection infrastructures - just to name a few.
+intrusion detection infrastructures; to name just a few.
 Removing this duplication is highly desirable both for better maintainability
 and cost-saving.
 However, this {\it requires} a technical
@@ -39,13 +39,13 @@ decrease and offset any economic drive connected to the IPv4 address shortage,
 The standard solution for accessing IPV4-only services from an IPv6-only
 network is the deployment of DNS64 (RFC6147) and stateful
 NAT64 (RFC6146 \cite{rfc}) services. DNS64 maps names that are resolved to
-an IPv4 address only ('{\tt A}' records) to a synthesized IPv6 address composed
+an IPv4 address only (`{\tt A}' records) to a synthesized IPv6 address composed
 of a default prefix\footnote{Usually {\tt 64:ff9b::}.} plus the four bytes of
 the IPv4 address. Traffic towards the DNS64 prefix is then routed to
 a NAT64 service attached to the public IPv4 network. This will in turn map the
 source ports, translate the IP packets to IPv4 and convert any return traffic
 back to IPv6. While NAT64 and DNS64 services start being incorporated by
-several technology developers (especially in the 'carrier-grade' NAT 
+several technology developers (especially in the `carrier-grade' NAT 
 appliance market),
 just a few open-source reference implementations exist for UNIX, with
 JOOL\footnote{\tt https://www.jool.mx} apparently being the only one 
