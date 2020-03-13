@@ -36,7 +36,7 @@ addresses have started to be returned to the market, their market price will
 decrease and offset any economic drive connected to the IPv4 address shortage,
 {\it relieving} the pressure for migration.\par
 
-The standard solution for accessing IPv4-only services from an IPv6-only
+A standard solution for accessing IPv4-only services from an IPv6-only
 network is the deployment of DNS64 (RFC6147) and stateful
 NAT64 (RFC6146 \cite{rfc}) services. DNS64 maps names that are resolved to
 an IPv4 address only (`{\tt A}' records) to a synthesized IPv6 address composed
@@ -44,7 +44,7 @@ of a default prefix\footnote{Usually {\tt 64:ff9b::}.} plus the four bytes of
 the IPv4 address. Traffic towards the DNS64 prefix is then routed to
 a NAT64 service attached to the public IPv4 network. This will in turn map the
 source ports, translate the IP packets to IPv4 and convert any return traffic
-back to IPv6. While NAT64 and DNS64 services start being incorporated by
+back to IPv6. While NAT64 and DNS64 services have started to be incorporated by
 several technology developers (especially in the `carrier-grade' NAT 
 appliance market),
 just a few open-source reference implementations exist for UNIX, with
