@@ -1,0 +1,167 @@
+\documentclass{webofc}
+\usepackage[varg]{txfonts}   % Web of Conferences font
+%
+% Put here some packages required or/and some personnal commands
+%
+\usepackage{hyperref}
+\hypersetup{colorlinks=false}
+
+%
+\begin{document}
+%
+\title{IPv6-only networking on WLCG}
+%
+% subtitle is optionnal
+%
+%%%\subtitle{Do you have a subtitle?\\ If so, write it here}
+
+\author{
+  \firstname{Marian} \lastname{Babik}\inst{1}\and
+  \firstname{Martin} \lastname{Bly}\inst{2}\and
+  \firstname{Nick} \lastname{Buraglio}\inst{3}\and
+  \firstname{Tim} \lastname{Chown}\inst{4}\and
+  \firstname{Dimitrios} \lastname{Christidis}\inst{1}\and
+  \firstname{Ji\v{r}i} \lastname{Chudoba}\inst{5}\and
+  \firstname{Phil} \lastname{DeMar}\inst{6}\and
+  \firstname{Jos\'e} \lastname{Flix~Molina}\inst{7}\and
+  \firstname{Costin} \lastname{Grigoras}\inst{1}\and
+  \firstname{Bruno} \lastname{Hoeft}\inst{9}\and
+  \firstname{Hiro} \lastname{Ito}\inst{10}\and
+  \firstname{David} \lastname{Kelsey}\inst{2}\thanks{\email{david.kelsey@stfc.ac.uk}} \and
+  \firstname{Edoardo} \lastname{Martelli}\inst{1}\and
+  \firstname{Shawn} \lastname{McKee}\inst{11}\and
+  \firstname{Maria del Carmen} \lastname{Misa~Moreira}\inst{1}\and
+  \firstname{Raja} \lastname{Nandakumar}\inst{2}\and
+  \firstname{Kars} \lastname{Ohrenberg}\inst{7}\and
+  \firstname{Francesco} \lastname{Prelz}\inst{12}\and
+  \firstname{Duncan} \lastname{Rand}\inst{13}\and
+  \firstname{Andrea} \lastname{Sciab\`a}\inst{1}\and
+  \firstname{Tim} \lastname{Skirvin}\inst{6}
+}
+
+\institute{ 
+  European Organization for Nuclear Research (CERN), CH-1211 Geneva 23, Switzerland
+\and
+  UKRI STFC Rutherford Appleton Laboratory (RAL), Harwell Campus, Didcot OX11 0QX, United Kingdom
+\and
+  Energy Sciences Network (ESNET), Lawrence Berkeley National Laboratory, 1 Cyclotron Rd, Berkeley CA 94720, United States of America
+\and
+  JISC, Lumen House, Library Avenue, Harwell Campus, Didcot OX11 0SG, United Kingdom
+\and
+  Institute of Physics, Academy of Sciences of the Czech Republic, Na Slovance 2 182 21 Prague 8, Czech Republic
+\and
+  Fermi National Accelerator Laboratory (FNAL), P.O. Box 500, Batavia IL 60510, United States of America
+\and
+  Centro de Investigaciones Energ\'eticas, Medioambientales y Tecnol\'ogicas (CIEMAT), Av. Complutense 40, E-28040 Madrid, Spain
+\and
+  Karlsruhe Institute of Technology (KIT), Hermann-von-Helmholtz-Platz 1, D-76344 Eggenstein-Leopoldshafen, Germany 
+\and
+  Brookhaven National Laboratory (BNL), 98 Rochester St., Upton NY 11973, United States of America
+\and
+  University of Michigan, 500 S State S, Ann Arbor MI 48109, United States of America
+\and
+  Deutsches Elektronen-Synchrotron (DESY), Notkestra\ss e 85, D-22607 Hamburg, Germany
+\and
+  INFN, Sezione di Milano, via G. Celoria 16, I-20133 Milano, Italy
+\and
+  Imperial College London, South Kensington Campus, London SW7 2AZ, United Kingdom
+}
+
+\abstract
+{The transition of WLCG storage services to dual-stack IPv4/IPv6 is nearing completion after more
+than 5 years, thus enabling the use of IPv6-only CPU resources as agreed by the WLCG Management
+Board and presented by us at earlier CHEP conferences. Much of the data is transferred by the LHC
+experiments over IPv6. All Tier-1 storage and over 90% of Tier-2 storage is now IPv6-enabled, yet we
+still see IPv4 transfers happening when both endpoints have IPv6 available or when remote data is
+accessed over the network from worker nodes.
+The monitoring and tracking of all data transfers is essential, together with the ability to understand
+the relative use of IPv6 and IPv4. This paper presents the status of monitoring IPv6 data flows within
+WLCG and plans to improve the ability to distinguish between IPv6 and IPv4. Furthermore, the
+Research Networking Technical Working Group has identified marking the IPv6 packet header as one
+approach for understanding complex large data flows. This provides another driver for a full
+transition to the use of IPv6 in WLCG data transfers.
+The agreed endpoint of the WLCG transition to IPv6 remains the deployment of IPv6-only services,
+thereby removing the complexity and security concerns of operating dual stacks. The working group
+is identifying where IPv4 can be removed and investigating the obstacles to the use of IPv6 in WLCG.
+Why do transfers between two dual-stack endpoints still use IPv4? This work is presented together
+with the obstacles defeated, those remaining, and those outside of our control.}
+\maketitle
+\section{Introduction}
+\label{sec-intro}
+\input{section-1-introduction.tex}
+% Etc. etc. etc.
+%For one-column wide figures use syntax of figure~\ref{fig-1}
+%\begin{figure}[h]
+%% Use the relevant command for your figure-insertion program
+%% to insert the figure file.
+%\centering
+%\includegraphics[width=1cm,clip]{tiger}
+%\caption{Please write your figure caption here}
+%\label{fig-1}       % Give a unique label
+%\end{figure}
+%
+%For two-column wide figures use syntax of figure~\ref{fig-2}
+%\begin{figure*}
+%\centering
+%% Use the relevant command for your figure-insertion program
+%% to insert the figure file. See example above.
+%% If not, use
+%\vspace*{5cm}       % Give the correct figure height in cm
+%\caption{Please write your figure caption here}
+%\label{fig-2}       % Give a unique label
+%\end{figure*}
+%
+%For figure with sidecaption legend use syntax of figure
+%\begin{figure}
+%% Use the relevant command for your figure-insertion program
+%% to insert the figure file.
+%\centering
+%\sidecaption
+%\includegraphics[width=5cm,clip]{tiger}
+%\caption{Please write your figure caption here}
+%\label{fig-3}       % Give a unique label
+%\end{figure}
+%
+%For tables use syntax in table~\ref{tab-1}.
+%\begin{table}
+%\centering
+%\caption{Please write your table caption here}
+%\label{tab-1}       % Give a unique label
+%% For LaTeX tables you can use
+%\begin{tabular}{lll}
+%\hline
+%first & second & third  \\\hline
+%number & number & number \\
+%number & number & number \\\hline
+%\end{tabular}
+%% Or use
+%\vspace*{5cm}  % with the correct table height
+%\end{table}
+%
+% BibTeX or Biber users please use (the style is already called in the class, ensure that the "woc.bst" style is in your local directory)
+% \bibliography{name or your bibliography database}
+%
+% Non-BibTeX users please use
+%
+%\begin{thebibliography}{}
+%
+% and use \bibitem to create references.
+%
+%\bibitem{rfc} All Internet Engineering Task Force Requests For Comments (RFC) do
+%cuments are available
+%from URLs such as http://www.ietf.org/rfc/rfcNNNN.txt where NNNN is the RFC numb
+%er, for example {\tt http://www.ietf.org/rfc/rfc2460.txt}
+% Format for Journal Reference
+%Journal Author, Journal \textbf{Volume}, page numbers (year)
+% Format for books
+%\bibitem{RefB}
+%Book Author, \textit{Book title} (Publisher, place, year) page numbers
+% etc
+%\end{thebibliography}
+%
+\input{bibliography.tex}
+%
+\end{document}
+%
+% end of file template.tex
+
