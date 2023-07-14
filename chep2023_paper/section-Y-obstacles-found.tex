@@ -1,1 +1,36 @@
+%section Y
 
+Several obstacles have being delaying the deployment of IPv6. 
+There are many reasons stopping the full use of IPv6/IPv4
+• Dual stack is an essential step on the journey to IPv6-only
+The Obstacles that we have been addressing:
+1. WLCG Sites not yet deployed IPv6 networking ~done
+2. Sites have IPv6 but Tier-2 has no dual-stack storage ~done
+3. IPv6 monitoring not available or broken see next slide
+4. Service is dual-stack but IPv4 being used see next slide
+• no time to describe all the obstacles we found and fixed
+
+
+removed
+Some FTS monitoring now able to
+distinguish IPv6 from IPv4
+ATLAS & CMS HTTP transfers into CERN (last year)
+– IPv6 showing from August 2022 onwards
+
+Data transfers into USA/ATLAS Great Lakes Tier 2 (AGTL2)
+Found to use IPv4 even when both ends dual-stack (dCache/WebDAV)
+java.net.preferIPv6Addresses (default: false) - Now set to “true”
+Fixed at 17:00 on 14 Feb 2022 (confirmed in the plot!)
+This fix is essential for all dCache instances - fixed in v7.2.11
+
+Obstacles to IPv6 - to be addressed
+5. Non-storage services not yet dual-stack
+a. ~60% of all WLCG services are dual-stack today
+6. WLCG client CPU (worker nodes, VMs, containers) some IPv4-only
+7. Services/clients outside of WLCG Tier-1/Tier-2 not yet considered
+a. Tier-3, Public/Commercial Clouds, Analysis facilities, Experiment portals…
+8. Use of new or evolving technologies not yet tested or tracked
+a. New CPU architectures (GPU, non-x86, …), container orchestration, …
+9. “People” can be the obstacle
+a. they do not consider use of IPv6 or refuse to deploy!
+All of these will be addressed by the working group
